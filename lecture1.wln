@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"Controller" -> "cc789c0d-9338-43c8-9e5d-f076cbed572c", 
+<|"Notebook" -> <|"Controller" -> "e010c1a4-a969-42bc-8ba2-611ea6bd0c5b", 
    "ExcalidrawImages" -> 
     <|"c4c2d174dc009aba11ccf1f6d46e4ea99abee5d2-edraw" -> "{\"mimeType\":\"im\
 age/png\",\"id\":\"c4c2d174dc009aba11ccf1f6d46e4ea99abee5d2\",\"dataURL\":\"d\
@@ -472,7 +472,7 @@ trieved\":1770104255355}"|>, "FocusedCell" ->
     CoffeeLiqueur`Notebook`Cells`CellObj[
      CoffeeLiqueur`Notebook`Cells`CellObj`$147], 
    "MessangerChannel" -> Messanger, "ModalsChannel" -> 
-    "5d7b59a3-71ce-4218-97b5-ec3326c40e57", 
+    "74c010e9-b5dc-418f-85c9-53371230ebeb", 
    "Objects" -> <|"0684cb2c-cd2d-42e2-ade1-07b1f516ec23" -> 
       <|"Public" -> Hold[
          CoffeeLiqueur`Extensions`FrontendObject`Internal`Compressed["eJzs3b+\
@@ -9250,51 +9250,51 @@ b/0yZ+++eqbb//yv5//7cd//vSz//zjT+pXf/rnv3/+xbvP3v3jm6++e//lN1//61/+x3fvv/n75+\
 \:0449\:0438\:0435 \:0441\:043b\:043e\:0432\:0430 \:043f\:0440\:043e \
 \:0430\:0432\:0442\:043e\:0442\:0435\:0441\:0442\:0438\:0440\:043e\:0432\
 \:0430\:043d\:0438\:0435", CoffeeLiqueur`Notebook`Cells`CellObj[
-       CoffeeLiqueur`Notebook`Cells`CellObj`$145]], 
+       CoffeeLiqueur`Notebook`Cells`CellObj`$83]], 
      CoffeeLiqueur`Extensions`TOC`Private`heading[1, "\:041f\:043b\:0430\
 \:043d \:0437\:0430\:043d\:044f\:0442\:0438\:044f 1: \
 \:0417\:043d\:0430\:043a\:043e\:043c\:0438\:043c\:0441\:044f \:0441 Python", 
       CoffeeLiqueur`Notebook`Cells`CellObj[
-       CoffeeLiqueur`Notebook`Cells`CellObj`$139]], 
+       CoffeeLiqueur`Notebook`Cells`CellObj`$88]], 
      CoffeeLiqueur`Extensions`TOC`Private`heading[2, "\:041a\:043b\:0430\
 \:0441\:0441\:0438\:0444\:0438\:043a\:0430\:0446\:0438\:044f \
 \:044f\:0437\:044b\:043a\:0430", CoffeeLiqueur`Notebook`Cells`CellObj[
-       CoffeeLiqueur`Notebook`Cells`CellObj`$87]], 
+       CoffeeLiqueur`Notebook`Cells`CellObj`$95]], 
      CoffeeLiqueur`Extensions`TOC`Private`heading[3, "\:041f\:043e \
 \:0442\:0438\:043f\:0443 \
 \:0438\:0441\:043f\:043e\:043b\:043d\:0435\:043d\:0438\:044f", 
       CoffeeLiqueur`Notebook`Cells`CellObj[
-       CoffeeLiqueur`Notebook`Cells`CellObj`$92]], 
+       CoffeeLiqueur`Notebook`Cells`CellObj`$97]], 
      CoffeeLiqueur`Extensions`TOC`Private`heading[2, "\:041e\:0442\:043b\
 \:0438\:0447\:0438\:044f \:043e\:0442 \:0434\:0440\:0443\:0433\:0438\:0445 \
 \:044f\:0437\:044b\:043a\:043e\:0432 \
 \:043f\:0440\:043e\:0433\:0440\:0430\:043c\:043c\:0438\:0440\:043e\:0432\
 \:0430\:043d\:0438\:044f", CoffeeLiqueur`Notebook`Cells`CellObj[
-       CoffeeLiqueur`Notebook`Cells`CellObj`$105]], 
+       CoffeeLiqueur`Notebook`Cells`CellObj`$108]], 
      CoffeeLiqueur`Extensions`TOC`Private`heading[2, 
       "\:041f\:0440\:0430\:043a\:0442\:0438\:043a\:0430", 
       CoffeeLiqueur`Notebook`Cells`CellObj[
-       CoffeeLiqueur`Notebook`Cells`CellObj`$112]], 
+       CoffeeLiqueur`Notebook`Cells`CellObj`$120]], 
      CoffeeLiqueur`Extensions`TOC`Private`heading[2, 
       "\:0421\:0438\:043d\:0442\:0430\:043a\:0441\:0438\:0441", 
       CoffeeLiqueur`Notebook`Cells`CellObj[
-       CoffeeLiqueur`Notebook`Cells`CellObj`$132]]}|>, 
+       CoffeeLiqueur`Notebook`Cells`CellObj`$134]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n# \:041e\:0431\:0449\:0438\:0435 \
 \:0441\:043b\:043e\:0432\:0430 \:043f\:0440\:043e \
 \:0430\:0432\:0442\:043e\:0442\:0435\:0441\:0442\:0438\:0440\:043e\:0432\
 \:0430\:043d\:0438\:0435", "Display" -> "codemirror", 
-    "Hash" -> "3675d23e-690b-4a00-b50e-3bad6c0e56a4", "Invisible" -> False, 
+    "Hash" -> "7f026916-09ea-4eaf-9a5f-c63b9a0b55de", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "# \:041e\:0431\:0449\:0438\:0435 \
 \:0441\:043b\:043e\:0432\:0430 \:043f\:0440\:043e \
 \:0430\:0432\:0442\:043e\:0442\:0435\:0441\:0442\:0438\:0440\:043e\:0432\
 \:0430\:043d\:0438\:0435", "Display" -> "markdown", 
-    "Hash" -> "e4cc1e3c-d0d1-4efd-893c-1381b5ad9e3f", "Invisible" -> False, 
+    "Hash" -> "b937992b-8a1e-4f1c-b668-c5fd38193e97", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n- \:041c\:043e\:0439 \:043e\:043f\:044b\:0442\n- \
 \:0420\:0430\:0441\:043f\:0440\:043e\:0441\:0442\:0440\:0430\:043d\:0435\
 \:043d\:043d\:043e\:0435 \:0438 \:0440\:0435\:0434\:043a\:043e\:0435 \
@@ -9303,10 +9303,10 @@ b/0yZ+++eqbb//yv5//7cd//vSz//zjT+pXf/rnv3/+xbvP3v3jm6++e//lN1//61/+x3fvv/n75+\
 \:043f\:043e\:0441\:0442\:0440\:043e\:0435\:043d\:0438\:044f \
 \:0430\:0432\:0442\:043e\:0442\:0435\:0441\:0442\:043e\:0432", 
     "Display" -> "codemirror", "Hash" -> 
-     "a905ad6a-cb9e-416d-9945-390c79dd3499", "Invisible" -> False, 
+     "e90708eb-0bc8-445f-8e20-e48af4f199a6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "- \:041c\:043e\:0439 \:043e\:043f\:044b\:0442\n- \
 \:0420\:0430\:0441\:043f\:0440\:043e\:0441\:0442\:0440\:0430\:043d\:0435\
 \:043d\:043d\:043e\:0435 \:0438 \:0440\:0435\:0434\:043a\:043e\:0435 \
@@ -9315,92 +9315,92 @@ b/0yZ+++eqbb//yv5//7cd//vSz//zjT+pXf/rnv3/+xbvP3v3jm6++e//lN1//61/+x3fvv/n75+\
 \:043f\:043e\:0441\:0442\:0440\:043e\:0435\:043d\:0438\:044f \
 \:0430\:0432\:0442\:043e\:0442\:0435\:0441\:0442\:043e\:0432", 
     "Display" -> "markdown", "Hash" -> 
-     "3a04500e-4534-4c50-96cf-bca5f74242d8", "Invisible" -> False, 
+     "0c56b198-91dc-4660-8d46-eebe85b0d905", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n# \:041f\:043b\:0430\:043d \
 \:0437\:0430\:043d\:044f\:0442\:0438\:044f 1: \
 \:0417\:043d\:0430\:043a\:043e\:043c\:0438\:043c\:0441\:044f \:0441 Python", 
     "Display" -> "codemirror", "Hash" -> 
-     "1e5e1005-580f-446a-8103-757214f0eb77", "Invisible" -> False, 
+     "3fcdab7e-4e38-4339-b974-0037e3719ab8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "# \:041f\:043b\:0430\:043d \
 \:0437\:0430\:043d\:044f\:0442\:0438\:044f 1: \
 \:0417\:043d\:0430\:043a\:043e\:043c\:0438\:043c\:0441\:044f \:0441 Python", 
     "Display" -> "markdown", "Hash" -> 
-     "52220648-a360-4c1c-9eca-1752c193de6f", "Invisible" -> False, 
+     "a5d841d4-e96c-449f-bb04-ee067b356fa1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n## \
 \:041a\:043b\:0430\:0441\:0441\:0438\:0444\:0438\:043a\:0430\:0446\:0438\
 \:044f \:044f\:0437\:044b\:043a\:0430", "Display" -> "codemirror", 
-    "Hash" -> "612d48ae-3273-47cc-92c9-61478d2afa6f", "Invisible" -> False, 
+    "Hash" -> "4a4052e2-ddb0-44d0-ac97-70adef74a1e1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "## \
 \:041a\:043b\:0430\:0441\:0441\:0438\:0444\:0438\:043a\:0430\:0446\:0438\
 \:044f \:044f\:0437\:044b\:043a\:0430", "Display" -> "markdown", 
-    "Hash" -> "9d33b6d4-a3ec-48ae-8229-b14c831a3094", "Invisible" -> False, 
+    "Hash" -> "94b65d9d-5c65-4bd9-b0f0-b9fe2c5905f0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n### \:041f\:043e \:0442\:0438\:043f\:0443 \
 \:0438\:0441\:043f\:043e\:043b\:043d\:0435\:043d\:0438\:044f", 
     "Display" -> "codemirror", "Hash" -> 
-     "dc354cd8-4539-44c4-9c45-5224639676ae", "Invisible" -> False, 
+     "cd54f105-3c8a-42c3-8073-19438a13cc3e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "### \:041f\:043e \:0442\:0438\:043f\:0443 \
 \:0438\:0441\:043f\:043e\:043b\:043d\:0435\:043d\:0438\:044f", 
     "Display" -> "markdown", "Hash" -> 
-     "710cee49-c952-41de-9a91-610255f13e0e", "Invisible" -> False, 
+     "f1307c26-1f8a-438b-bdd5-c9530930708a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n- \
 \:0418\:043d\:0442\:0435\:0440\:043f\:0440\:0435\:0442\:0438\:0440\:0443\
 \:0435\:043c\:044b\:0439\n- \:0421 \
 \:0434\:0438\:043d\:0430\:043c\:0438\:0447\:0435\:0441\:043a\:043e\:0439 \
 \:0442\:0438\:043f\:0438\:0437\:0430\:0446\:0438\:0435\:0439", 
     "Display" -> "codemirror", "Hash" -> 
-     "a7736f8e-65ec-4cdd-9a7d-af406d87a3c8", "Invisible" -> False, 
+     "254b6f06-8093-4f56-9bfe-c3937ffea21a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "- \
 \:0418\:043d\:0442\:0435\:0440\:043f\:0440\:0435\:0442\:0438\:0440\:0443\
 \:0435\:043c\:044b\:0439\n- \:0421 \
 \:0434\:0438\:043d\:0430\:043c\:0438\:0447\:0435\:0441\:043a\:043e\:0439 \
 \:0442\:0438\:043f\:0438\:0437\:0430\:0446\:0438\:0435\:0439", 
     "Display" -> "markdown", "Hash" -> 
-     "fe02ea02-0212-422d-8a44-eaedc8bd952b", "Invisible" -> False, 
+     "fdc16642-66bf-476d-8655-8c852abc3246", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n\:041a\:0430\:043a \
 \"\:0430\:0431\:0441\:0442\:0440\:0430\:043a\:0442\:043d\:043e\" \
 \:043f\:0440\:043e\:0438\:0441\:0445\:043e\:0434\:0438\:0442 \
 \:0432\:044b\:043f\:043e\:043b\:043d\:0435\:043d\:0438\:0435 \
 \:043a\:043e\:0434\:0430:", "Display" -> "codemirror", 
-    "Hash" -> "80fc580d-c379-4df9-bea9-7269776e2b77", "Invisible" -> False, 
+    "Hash" -> "632821ab-623d-40b2-b591-e5e37f964155", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "\:041a\:0430\:043a \
 \"\:0430\:0431\:0441\:0442\:0440\:0430\:043a\:0442\:043d\:043e\" \
 \:043f\:0440\:043e\:0438\:0441\:0445\:043e\:0434\:0438\:0442 \
 \:0432\:044b\:043f\:043e\:043b\:043d\:0435\:043d\:0438\:0435 \
 \:043a\:043e\:0434\:0430:", "Display" -> "markdown", 
-    "Hash" -> "448b8dce-8dcb-473e-bfd9-989e67658a26", "Invisible" -> False, 
+    "Hash" -> "c281bef7-f92e-4822-aeba-3ddfd1367dec", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n!![1:W3sidHlwZSI6InJlY3RhbmdsZSIsInZlcnNpb24iOjc5LCJ2ZXJ\
 zaW9uTm9uY2UiOjM4MzcwNDE3MCwiaXNEZWxldGVkIjpmYWxzZSwiaWQiOiJMMkcweVp5Vm5PVGM2\
 NzhEWERKVFMiLCJmaWxsU3R5bGUiOiJzb2xpZCIsInN0cm9rZVdpZHRoIjo0LCJzdHJva2VTdHlsZ\
@@ -10211,10 +10211,10 @@ ayI6bnVsbCwibG9ja2VkIjpmYWxzZSwidGV4dCI6IiIsImZvbnRTaXplIjoyMCwiZm9udEZhbWlse\
 SI6MSwidGV4dEFsaWduIjoibGVmdCIsInZlcnRpY2FsQWxpZ24iOiJ0b3AiLCJiYXNlbGluZSI6MT\
 gsImNvbnRhaW5lcklkIjpudWxsLCJvcmlnaW5hbFRleHQiOiIiLCJsaW5lSGVpZ2h0IjoxLjI1fV0\
 =]", "Display" -> "codemirror", "Hash" -> 
-     "e030aefa-3ae4-40a3-82eb-4df23fe00ae6", "Invisible" -> False, 
+     "b9b798d1-7709-408c-bd9e-8c3e89c6d68a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "\n<div class=\"text-center w-full\"><svg version=\"1.1\" \
 xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1193.1799926757812 \
 258.5\">\n  <!-- svg-source:excalidraw -->\n  \n  <defs>\n    <style \
@@ -10559,27 +10559,27 @@ C17.24 32.8, 11.34 29.55, 7.25 29 M25.75 29 C20.21 28.11, 14.66 30.95, 7.25 \
 0.38 14.6, 0 7.25 M0 7.25 C-1.66 5.74, 6.41 -3.81, 7.25 0 M0 7.25 C0.46 6.31, \
 3.75 -3.61, 7.25 0\" stroke=\"#1e1e1e\" stroke-width=\"4\" \
 fill=\"none\"></path></g></svg></div>\n", "Display" -> "markdown", 
-    "Hash" -> "fbf7e938-6f76-4e27-94f1-3770452c8bc9", "Invisible" -> False, 
+    "Hash" -> "c629cb11-bf4a-400f-8bc5-37e1727d8155", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n## \:041e\:0442\:043b\:0438\:0447\:0438\:044f \
 \:043e\:0442 \:0434\:0440\:0443\:0433\:0438\:0445 \
 \:044f\:0437\:044b\:043a\:043e\:0432 \
 \:043f\:0440\:043e\:0433\:0440\:0430\:043c\:043c\:0438\:0440\:043e\:0432\
 \:0430\:043d\:0438\:044f", "Display" -> "codemirror", 
-    "Hash" -> "de1adbcb-3811-4b54-a778-6376220cd5d4", "Invisible" -> False, 
+    "Hash" -> "490ee959-bcfd-49c1-aa4e-64b899ed4966", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "## \:041e\:0442\:043b\:0438\:0447\:0438\:044f \:043e\:0442 \
 \:0434\:0440\:0443\:0433\:0438\:0445 \:044f\:0437\:044b\:043a\:043e\:0432 \
 \:043f\:0440\:043e\:0433\:0440\:0430\:043c\:043c\:0438\:0440\:043e\:0432\
 \:0430\:043d\:0438\:044f", "Display" -> "markdown", 
-    "Hash" -> "ee2564c4-18ca-4c6f-9700-fbae628b7ea0", "Invisible" -> False, 
+    "Hash" -> "f0d6c2e3-aff9-4ad6-9b32-22770ccfc7cb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n\:041e\:0447\:0435\:0432\:0438\:0434\:043d\:043e, \
 \:0447\:0442\:043e \:0434\:0440\:0443\:0433\:0435 \
 \:044f\:0437\:044b\:043a\:0438 \
@@ -10588,10 +10588,10 @@ fill=\"none\"></path></g></svg></div>\n", "Display" -> "markdown",
 \:0441\:0442\:0430\:0442\:0438\:0447\:0435\:0441\:043a\:0443\:044e \
 \:0442\:0438\:043f\:0438\:0437\:0430\:0446\:0438\:044e: C#, Java, C, Rust, \
 Go, Kotlin.", "Display" -> "codemirror", 
-    "Hash" -> "73a2600a-17a5-46ed-bd36-a5777bb7bd91", "Invisible" -> False, 
+    "Hash" -> "f93c4441-0133-4e89-b87e-94e09c70a4e4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "\:041e\:0447\:0435\:0432\:0438\:0434\:043d\:043e, \
 \:0447\:0442\:043e \:0434\:0440\:0443\:0433\:0435 \
 \:044f\:0437\:044b\:043a\:0438 \
@@ -10600,22 +10600,22 @@ Go, Kotlin.", "Display" -> "codemirror",
 \:0441\:0442\:0430\:0442\:0438\:0447\:0435\:0441\:043a\:0443\:044e \
 \:0442\:0438\:043f\:0438\:0437\:0430\:0446\:0438\:044e: C#, Java, C, Rust, \
 Go, Kotlin.", "Display" -> "markdown", 
-    "Hash" -> "6a800577-2125-4984-ad69-4a6fb23d06e9", "Invisible" -> False, 
+    "Hash" -> "30be339c-fbce-45f0-8d55-467ab2858dbe", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n## \:041f\:0440\:0430\:043a\:0442\:0438\:043a\:0430", 
     "Display" -> "codemirror", "Hash" -> 
-     "dab1d910-a127-4eb3-a5fc-76d1e98ef308", "Invisible" -> False, 
+     "09eef83c-b918-4acd-a94d-84d92b8eb82f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "## \:041f\:0440\:0430\:043a\:0442\:0438\:043a\:0430", 
     "Display" -> "markdown", "Hash" -> 
-     "bc9fa2c0-4c4a-4d13-a354-b61b1fca7b1d", "Invisible" -> False, 
+     "722b2cda-0d8d-49db-be33-4b27a84a2b9d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n\:041f\:0440\:043e\:0431\:0443\:0435\:043c \
 \:0438\:043d\:0442\:0435\:0440\:043f\:0440\:0438\:0442\:0430\:0442\:043e\
 \:0440 \:0432 \:043f\:0440\:044f\:043c\:043e\:043c \
@@ -10625,10 +10625,10 @@ Go, Kotlin.", "Display" -> "markdown",
 \:043f\:0435\:0447\:0430\:0442\:0430\:0435\:0442 \
 \:0447\:0442\:043e-\:043d\:0438\:0431\:0443\:0434\:044c", 
     "Display" -> "codemirror", "Hash" -> 
-     "38f4fd50-78f8-4c15-b6fa-87e6bfed512c", "Invisible" -> False, 
+     "54a099bb-8885-4bb3-b3dd-5a734534ce89", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "\:041f\:0440\:043e\:0431\:0443\:0435\:043c \
 \:0438\:043d\:0442\:0435\:0440\:043f\:0440\:0438\:0442\:0430\:0442\:043e\
 \:0440 \:0432 \:043f\:0440\:044f\:043c\:043e\:043c \
@@ -10638,56 +10638,56 @@ Go, Kotlin.", "Display" -> "markdown",
 \:043f\:0435\:0447\:0430\:0442\:0430\:0435\:0442 \
 \:0447\:0442\:043e-\:043d\:0438\:0431\:0443\:0434\:044c", 
     "Display" -> "markdown", "Hash" -> 
-     "2892a992-80a5-4d04-ad74-cf7ba957a396", "Invisible" -> False, 
+     "b16b4661-4c4d-4f62-9380-579fcd413aea", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "Import[FileNameJoin[{\"attachments\", \"image-cd5.png\"}]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "335e351b-37ec-478e-ac1e-0023535959a8", "Invisible" -> False, 
+     "2d70824d-9ae1-46f4-847b-430be88a9b88", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"0684cb2c-cd2d-42e2-ade1-07b1f516ec23\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG5hZm\
 CQnGSXrJqcYpeiaGKUa6SampBrqGpgnGaaZGpqlJhsZAwCK6RXt\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "d4e07a8f-5911-416e-91df-f8878d242954", "Invisible" -> False, 
+     "d1bee7e1-72b6-4121-94b0-2941111f4b02", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n\:0421\:043e\:0437\:0434\:0430\:0435\:043c \
 \:0441\:043a\:0440\:0438\:043f\:0442 \:0438 \
 \:0438\:0441\:043f\:043e\:043b\:043d\:044f\:0435\:043c \:0435\:0433\:043e \
 \:0432 \:043a\:043e\:043d\:044c\:0441\:043e\:043b\:0438", 
     "Display" -> "codemirror", "Hash" -> 
-     "c98d1416-8582-446a-8f22-6beddfee2f79", "Invisible" -> False, 
+     "fd461582-614f-4ae4-9cb3-b3e5a410aea0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "\:0421\:043e\:0437\:0434\:0430\:0435\:043c \
 \:0441\:043a\:0440\:0438\:043f\:0442 \:0438 \
 \:0438\:0441\:043f\:043e\:043b\:043d\:044f\:0435\:043c \:0435\:0433\:043e \
 \:0432 \:043a\:043e\:043d\:044c\:0441\:043e\:043b\:0438", 
     "Display" -> "markdown", "Hash" -> 
-     "6d0b7906-8632-4a17-b001-edceced06c17", "Invisible" -> False, 
+     "5879ad6b-e371-4e72-84f5-45c7bc516bea", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "Import[FileNameJoin[{\"attachments\", \"image-4e2.png\"}]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "68ce6948-e956-400e-bca7-d2e6345c2eed", "Invisible" -> False, 
+     "46886749-5c54-4d67-9cd6-9bf68ee5260c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"c619d49b-0047-4a61-baec-1a46f312ecfa\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ5sZW\
 qaYWCbpGhiYmOuaJJoZ6iYlpibrGiaamKUZGxqlJqclAgCByBXy\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "9c0f25d0-dc47-41a6-98da-5bd27c5aeada", "Invisible" -> False, 
+     "1850d060-4e28-480a-8c58-4ca767b3fcaa", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> ".md\n\:0412\:0440\:043e\:0434\:0435 \:0432\:0441\:0435 \
 \:0440\:0430\:0431\:043e\:0442\:0430\:0435\:0442. \:042d\:0442\:043e \
 \:0430\:0431\:0441\:043e\:043b\:044e\:0442\:043d\:044b\:0439 \
@@ -10706,10 +10706,10 @@ qaYWCbpGhiYmOuaJJoZ6iYlpibrGiaamKUZGxqlJqclAgCByBXy\"*)(*]VB*)",
 \:0445 \:0431\:043b\:043e\:043a\:043d\:043e\:0442\:0430\:0445, \
 \:0432\:0440\:043e\:0434\:0435 Jupyter \:0438\:043b\:0438 Google Colab", 
     "Display" -> "codemirror", "Hash" -> 
-     "09b6d0d1-47ec-43b8-85d6-249e9e798653", "Invisible" -> False, 
+     "f02dac07-5f02-46ed-8025-f8131c92a2db", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "\:0412\:0440\:043e\:0434\:0435 \:0432\:0441\:0435 \
 \:0440\:0430\:0431\:043e\:0442\:0430\:0435\:0442. \:042d\:0442\:043e \
 \:0430\:0431\:0441\:043e\:043b\:044e\:0442\:043d\:044b\:0439 \
@@ -10728,35 +10728,35 @@ qaYWCbpGhiYmOuaJJoZ6iYlpibrGiaamKUZGxqlJqclAgCByBXy\"*)(*]VB*)",
 \:0445 \:0431\:043b\:043e\:043a\:043d\:043e\:0442\:0430\:0445, \
 \:0432\:0440\:043e\:0434\:0435 Jupyter \:0438\:043b\:0438 Google Colab", 
     "Display" -> "markdown", "Hash" -> 
-     "845dddb6-5982-4b38-9420-3c577bd5fd67", "Invisible" -> False, 
+     "6405c8e4-acd7-41fa-9df3-ed06076f7bc4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> 
      ".md\n## \:0421\:0438\:043d\:0442\:0430\:043a\:0441\:0438\:0441", 
     "Display" -> "codemirror", "Hash" -> 
-     "404ad6ea-d9a7-441c-bcbb-90597ed0e329", "Invisible" -> False, 
+     "fd91ac04-6308-4723-9786-6e041763a062", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> "## \:0421\:0438\:043d\:0442\:0430\:043a\:0441\:0438\:0441", 
     "Display" -> "markdown", "Hash" -> 
-     "69c8513f-8d5d-417a-b839-e6ed5bac516d", "Invisible" -> False, 
+     "49b065c3-d728-4f93-9021-bcdbc89a2986", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> 
      ".md\n**\:041f\:0435\:0440\:0435\:0439\:0434\:0435\:043c \:0432 \
 Jupyter**", "Display" -> "codemirror", 
-    "Hash" -> "b6f3141a-ce65-44de-bca1-f18d331e9ac3", "Invisible" -> False, 
+    "Hash" -> "8616fb94-9304-414c-95fa-a37469ef7ca6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, 
     "PublicFields" -> {"Properties"}, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>, 
+    "UID" -> Null, "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>, 
    <|"Data" -> 
      "**\:041f\:0435\:0440\:0435\:0439\:0434\:0435\:043c \:0432 Jupyter**", 
     "Display" -> "markdown", "Hash" -> 
-     "a78da626-c30d-4b5d-bbe1-2e59b8af3fc3", "Invisible" -> False, 
+     "1b8fe294-fd4a-492d-a055-68105f768ded", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "1290ee86-a074-4f08-8253-049b7435506e"|>}, 
+    "Notebook" -> "8e1d5954-859e-4b80-9167-db8db3a3cff4"|>}, 
  "serializer" -> "jsfn4"|>

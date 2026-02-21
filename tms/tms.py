@@ -14,7 +14,7 @@ class TestManagmentSystem:
 
         scenarios: str = '[\n'
         for scenario in self.scenarios:
-            scenarios += f'.   {scenario}\n'
+            scenarios += f'    {scenario}\n'
         scenarios += '  ]'
 
         return f'''TestManagmentSystem(\n  testers: {testers}, \n  scenarios: {scenarios}\n)'''
@@ -22,6 +22,13 @@ class TestManagmentSystem:
     def add_tester(self, name: str, level: int):
         tester = tst.Tester(self, name, level)
         self.testers.append(tester)
+
+    def get_tester(self, tester_name: str) -> tst.Tester:
+        for t in self.testers:
+            tester: tst.Tester = t
+            if tester.name == tester_name:
+                return tester
+        raise Exception(f'tester {tester_name} not found in tms.')
 
     def get_scenario(self, scenario_name: str) -> scn.Scenario:
         for s in self.scenarios:

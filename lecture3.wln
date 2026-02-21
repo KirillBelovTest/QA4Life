@@ -1,0 +1,13 @@
+<|"Notebook" -> <|"Controller" -> "d47e7ead-bf9f-49f7-b4a5-9129bf60313f", 
+   "FocusedCell" -> CoffeeLiqueur`Notebook`Cells`CellObj[
+     CoffeeLiqueur`Notebook`Cells`CellObj`$337], "FocusedCellSelection" -> 
+    {1, 0}, "MessangerChannel" -> Messanger, "ModalsChannel" -> 
+    "415e75f6-78bc-4e47-88ae-8212120c49b4", "Objects" -> <||>, 
+   "Path" -> "C:\\Users\\Kirill\\Projects\\QA4Life\\lecture3.wln", 
+   "PublicFields" -> {"Properties"}, "Symbols" -> <||>, "TOC" -> {}|>, 
+ "Cells" -> {<|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "f06f9a32-5b35-4f39-a924-98d25afd4d3d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "a2e240b0-b2df-4778-8955-65a05d0a7256"|>}, 
+ "serializer" -> "jsfn4"|>

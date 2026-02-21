@@ -1,5 +1,5 @@
-from .tester import Tester
-from .scenario import Scenario
+import tms.tester as tst
+import tms.scenario as scn
 
 class TestManagmentSystem:
     def __init__(self):
@@ -7,15 +7,25 @@ class TestManagmentSystem:
         self.scenarios = []
 
     def __repr__(self):
-        return f'''{{\n\ttesters: {self.testers}, \n\tscenarios: {self.scenarios}}}'''
+        testers: str = '[\n'
+        for tester in self.testers:
+            testers += f'    {tester}\n'
+        testers += '  ]'
+
+        scenarios: str = '[\n'
+        for scenario in self.scenarios:
+            scenarios += f'.   {scenario}\n'
+        scenarios += '  ]'
+
+        return f'''TestManagmentSystem(\n  testers: {testers}, \n  scenarios: {scenarios}\n)'''
 
     def add_tester(self, name: str, level: int):
-        tester = Tester(self, name, level)
+        tester = tst.Tester(self, name, level)
         self.testers.append(tester)
 
-    def get_scenario(self, scenario_name: str) -> 'Scenario':
+    def get_scenario(self, scenario_name: str) -> scn.Scenario:
         for s in self.scenarios:
-            scenario: Scenario = s
+            scenario: scn.Scenario = s
             if scenario.name == scenario_name:
                 return scenario
         raise Exception(f'scenario {scenario_name} not found in tms.')

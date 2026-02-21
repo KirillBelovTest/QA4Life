@@ -13,8 +13,9 @@ class TestManagmentSystem:
         tester = Tester(self, name, level)
         self.testers.append(tester)
 
-    def get_tester(self, tester_name: str) -> 'Tester':
-        return filter(lambda t: t.name == tester_name, self.testers)[0]
-
     def get_scenario(self, scenario_name: str) -> 'Scenario':
-        return filter(lambda s: s.name == scenario_name, self.scenarios)
+        for s in self.scenarios:
+            scenario: Scenario = s
+            if scenario.name == scenario_name:
+                return scenario
+        raise Exception(f'scenario {scenario_name} not found in tms.')

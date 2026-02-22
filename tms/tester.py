@@ -27,7 +27,6 @@ class Tester:
         step = scenario.get_next_step()
         self.current_step = step
 
-
     def execute_step(self, actual: str) -> 'bool':
         if self.current_step != None:
             return self.current_step.execute(actual)

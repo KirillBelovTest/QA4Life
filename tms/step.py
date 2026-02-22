@@ -8,7 +8,7 @@ class Step:
         self.bugs = []
 
     def __repr__(self):
-        return f'\n\t\tStep({self.name}, expected_result = {self.expected_result})'
+        return f'Step(name = {self.name}, expected_result = {self.expected_result})'
 
     def execute(self, actual_result: str) -> bool:
         return self.expected_result == actual_result

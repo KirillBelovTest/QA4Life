@@ -8,7 +8,14 @@ class Scenario:
         self.steps: list[stp.Step] = []
 
     def __repr__(self):
-        return f'Scenario(name = {self.name}, steps = {self.steps})'
+        steps = f'Scenario(name = {self.name}, steps = '
+        if len(self.steps) == 0:
+            return steps + f'{self.steps})'
+        steps += '['
+        for s in self.steps:
+            steps += f'      {s}\n'
+        steps += f'      ]\n    )'
+        return steps
 
     def add_step(self, step_name: str, expected_result: str):
         step = stp.Step(self, step_name, expected_result)

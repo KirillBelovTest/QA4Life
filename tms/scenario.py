@@ -11,9 +11,9 @@ class Scenario:
         steps = f'Scenario(name = {self.name}, steps = '
         if len(self.steps) == 0:
             return steps + f'{self.steps})'
-        steps += '['
+        steps += '[\n'
         for s in self.steps:
-            steps += f'      {s}\n'
+            steps += f'        {s}\n'
         steps += f'      ]\n    )'
         return steps
 

@@ -20,10 +20,12 @@ class TestManagmentSystem:
         return f'''TestManagmentSystem(\n  testers: {testers}, \n  scenarios: {scenarios}\n)'''
 
     def add_tester(self, name: str, level: int):
+        '''Добавление нового тестировщика в систему.'''
         tester = tst.Tester(self, name, level)
         self.testers.append(tester)
 
     def get_tester(self, tester_name: str) -> tst.Tester:
+        '''Получение тестировщика по имени.'''
         for t in self.testers:
             tester: tst.Tester = t
             if tester.name == tester_name:
@@ -31,6 +33,7 @@ class TestManagmentSystem:
         raise Exception(f'tester {tester_name} not found in tms.')
 
     def get_scenario(self, scenario_name: str) -> scn.Scenario:
+        '''Получение сценария по названию.'''
         for s in self.scenarios:
             scenario: scn.Scenario = s
             if scenario.name == scenario_name:

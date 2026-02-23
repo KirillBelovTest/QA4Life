@@ -16,17 +16,3 @@ class Scenario:
             steps += f'        {s}\n'
         steps += f'      ]\n    )'
         return steps
-
-    def add_step(self, step_name: str, expected_result: str):
-        step = stp.Step(self, step_name, expected_result)
-        self.steps.append(step)
-
-    def get_next_step(self) -> stp.Step | None:
-        if not hasattr(self, 'current_step_number'):
-            self.current_step_number = 0
-        
-        if self.current_step_number == len(self.steps):
-            return None
-        
-        self.current_step_number += 1
-        return self.steps[self.current_step_number - 1]

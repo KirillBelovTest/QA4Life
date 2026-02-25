@@ -1,7 +1,9 @@
+from typing import Any
+
 import tms.tester as tst
 import tms.scenario as scn
 
-class TestManagmentSystem:
+class ManagmentSystem:
     def __init__(self):
         self.testers = []
         self.scenarios = []
@@ -17,25 +19,23 @@ class TestManagmentSystem:
             scenarios += f'    {scenario}\n'
         scenarios += '  ]'
 
-        return f'''TestManagmentSystem(\n  testers: {testers}, \n  scenarios: {scenarios}\n)'''
+        return f'''ManagmentSystem(\n  testers: {testers}, \n  scenarios: {scenarios}\n)'''
 
     def add_tester(self, name: str, level: int):
         '''Добавление нового тестировщика в систему.'''
         tester = tst.Tester(self, name, level)
         self.testers.append(tester)
 
-    def get_tester(self, tester_name: str) -> tst.Tester:
+    def get_tester(self, tester_name: str) -> 'tst.Tester':
         '''Получение тестировщика по имени.'''
-        for t in self.testers:
-            tester: tst.Tester = t
-            if tester.name == tester_name:
-                return tester
-        raise Exception(f'tester {tester_name} not found in tms.')
+        return self.__find_first_by_name(self.testers, tester_name)
 
-    def get_scenario(self, scenario_name: str) -> scn.Scenario:
+    def get_scenario(self, scenario_name: str) -> 'scn.Scenario':
         '''Получение сценария по названию.'''
-        for s in self.scenarios:
-            scenario: scn.Scenario = s
-            if scenario.name == scenario_name:
-                return scenario
-        raise Exception(f'scenario {scenario_name} not found in tms.')
+        return self.__find_first_by_name(self.scenarios, scenario_name)
+
+    def __find_first_by_name(_, collection: list[Any], name: str) -> Any:
+        for item in collection:
+            if item.name == name:
+                return item
+        raise Exception(f'{name} not found in collection.')

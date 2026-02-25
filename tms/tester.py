@@ -3,7 +3,7 @@ import tms.scenario as scn
 import tms.step as stp
 
 class Tester:
-    def __init__(self, tms: tms.TestManagmentSystem, name: str, level: int):
+    def __init__(self, tms: 'tms.ManagmentSystem', name: str, level: int):
         self.tms = tms
         self.name = name
         self.level = level
@@ -19,7 +19,7 @@ class Tester:
         self.tms.scenarios.append(scenario)
 
     def take_scenario(self, scenario_name: str):
-        '''Тестировщик берет себе задачу
+        '''Тестировщик берет задачу
         на выполнение или обновление сценария.'''
         self.current_scenario = self.tms.get_scenario(scenario_name)
         self.current_step_number = 0
@@ -31,8 +31,7 @@ class Tester:
         self.current_scenario.steps.insert(step_number, step)
 
     def take_next_step(self):
-        '''В время работы над сценарием
-        тестировщик может перейти к следующему шагу
+        '''Тестировщик может перейти к следующему шагу
         и если шаги заканчиваются, то текущий шаг,
         над которым работает тестироващик принимает
         значение None.'''

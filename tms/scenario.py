@@ -2,7 +2,7 @@ import tms.step as stp
 import tms.tester as tst
 
 class Scenario:
-    def __init__(self, tester: tst.Tester, name: str):
+    def __init__(self, tester: 'tst.Tester', name: str):
         self.name = name
         self.tester = tester
         self.steps: list[stp.Step] = []

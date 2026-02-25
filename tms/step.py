@@ -1,7 +1,7 @@
 import tms.scenario as scn
 
 class Step:
-    def __init__(self, scenario: scn.Scenario, step_name: str, expected_result: str):
+    def __init__(self, scenario: 'scn.Scenario', step_name: str, expected_result: str):
         self.scenario = scenario
         self.name = step_name
         self.expected_result = expected_result

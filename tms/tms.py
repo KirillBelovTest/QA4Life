@@ -1,25 +1,22 @@
-from typing import Any
+import json
 
 import tms.tester as tst
 import tms.scenario as scn
 
-class ManagmentSystem:
+class TMS:
     def __init__(self):
-        self.testers = []
-        self.scenarios = []
+        self.testers: list['tst.Tester'] = []
+        self.scenarios: list['scn.Scenario'] = []
 
     def __repr__(self):
-        testers: str = '[\n'
-        for tester in self.testers:
-            testers += f'    {tester}\n'
-        testers += '  ]'
+        return json.dumps(self.to_dict())
 
-        scenarios: str = '[\n'
-        for scenario in self.scenarios:
-            scenarios += f'    {scenario}\n'
-        scenarios += '  ]'
-
-        return f'''ManagmentSystem(\n  testers: {testers}, \n  scenarios: {scenarios}\n)'''
+    def to_dict(self):
+        return {
+            'type': 'TMS',
+            'testers': list(map(lambda x: x.to_dict(), self.testers)),
+            'scenarios': list(map(lambda x: x.to_dict(), self.scenarios))
+        }
 
     def add_tester(self, name: str, level: int):
         '''Добавление нового тестировщика в систему.'''
@@ -28,14 +25,15 @@ class ManagmentSystem:
 
     def get_tester(self, tester_name: str) -> 'tst.Tester':
         '''Получение тестировщика по имени.'''
-        return self.__find_first_by_name(self.testers, tester_name)
+        for tester in self.testers:
+            if tester.name == tester_name:
+                return tester
+        raise Exception(f'{tester_name} not found in tms.')
 
-    def get_scenario(self, scenario_name: str) -> 'scn.Scenario':
-        '''Получение сценария по названию.'''
-        return self.__find_first_by_name(self.scenarios, scenario_name)
-
-    def __find_first_by_name(_, collection: list[Any], name: str) -> Any:
-        for item in collection:
-            if item.name == name:
-                return item
-        raise Exception(f'{name} not found in collection.')
+    def remove_tester(self, tester_name: str):
+        '''Удаление тестировщика по имени.'''
+        for tester in self.testers:
+            if tester.name == tester_name:
+                self.testers.remove(tester)
+                return
+        raise Exception(f'{tester_name} not found in tms.')

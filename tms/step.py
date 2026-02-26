@@ -1,3 +1,5 @@
+import json
+
 import tms.scenario as scn
 
 class Step:
@@ -8,7 +10,13 @@ class Step:
         self.bugs = []
 
     def __repr__(self):
-        return f'Step(name = {self.name}, expected_result = {self.expected_result})'
+        return json.dumps(self.to_dict())
 
-    def execute(self, actual_result: str) -> bool:
-        return self.expected_result == actual_result
+    def to_dict(self):
+        return {
+            'type': 'Step',
+            'name': self.name,
+            'scenarion': self.scenario.name,
+            'expected_result': self.expected_result,
+            'bugs': list(map(lambda x: x.to_dict(), self.bugs))
+        }

@@ -1,3 +1,5 @@
+import json
+
 import tms.scenario as scn
 import tms.step as stp
 
@@ -6,3 +8,14 @@ class Bug:
         self.scenario = scenario
         self.steps_to_reproduce = steps_to_reproduce
         self.status = 'open'
+
+    def __repr__(self):
+        return json.dumps(self.to_dict())
+
+    def to_dict(self):
+        return {
+            'type': 'Bug',
+            'scenario': self.scenario.name,
+            'status': self.expected_result,
+            'steps_to_reproduce': list(map(lambda x: x.name, self.steps_to_reproduce))
+        }

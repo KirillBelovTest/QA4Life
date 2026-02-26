@@ -10,9 +10,9 @@ class Bug:
         self.status = 'open'
 
     def __repr__(self):
-        return json.dumps(self.to_dict())
+        return json.dumps(self.__to_dict())
 
-    def to_dict(self):
+    def __to_dict(self):
         return {
             'type': 'Bug',
             'scenario': self.scenario.name,

@@ -18,6 +18,6 @@ class TesterRequest(BaseModel):
     level: int
 
 @api.post("/tester", status_code=status.HTTP_201_CREATED)
-async def get_tester(tester: TesterRequest):
+async def add_tester(tester: TesterRequest):
     tms.add_tester(tester.name, tester.level)
     return None

@@ -35,7 +35,6 @@ def test_rename_tester(tms):
 def test_tester_not_found(tms):
     with raises(Exception) as ex:
         tms.get_tester('any_name')
-
     assert ex.value.args[0] == 'any_name not found in tms.testers.'
 
 def test_cant_add_tester(tms: TMS):

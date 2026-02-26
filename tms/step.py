@@ -10,9 +10,9 @@ class Step:
         self.bugs = []
 
     def __repr__(self):
-        return json.dumps(self.__to_dict())
+        return json.dumps(self.to_dict())
 
-    def __to_dict(self):
+    def to_dict(self):
         return {
             'type': 'Step',
             'name': self.name,

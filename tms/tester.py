@@ -9,8 +9,8 @@ class Tester:
         self.tms = tms
         self.name = name
         self.level = level
-        self.current_scenario: 'scn.Scenario' | str = ''
-        self.current_step: 'stp.Step' | str = ''
+        self.current_scenario: 'scn.Scenario'
+        self.current_step: 'stp.Step'
         self.current_step_number: int = 0
 
     def __repr__(self):

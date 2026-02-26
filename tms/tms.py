@@ -21,7 +21,7 @@ class TMS:
     def add_tester(self, name: str, level: int):
         '''Добавление нового тестировщика в систему.'''
         if self.__is_tester_exists(name):
-            raise Exception(f'{name} alreade exists.')
+            raise Exception(f'{name} already exists.')
         else:
             tester = tst.Tester(self, name, level)
             self.testers.append(tester)
@@ -38,7 +38,7 @@ class TMS:
         for tester in self.testers:
             if tester.name == tester_name:
                 return tester
-        raise Exception(f'{tester_name} not found in tms.')
+        raise Exception(f'{tester_name} not found in tms.testers.')
 
     def remove_tester(self, tester_name: str):
         '''Удаление тестировщика по имени.'''
@@ -46,7 +46,7 @@ class TMS:
             if tester.name == tester_name:
                 self.testers.remove(tester)
                 return
-        raise Exception(f'{tester_name} not found in tms.')
+        raise Exception(f'{tester_name} not found in tms.testers.')
 
     def rename_tester(self, old_name: str, new_name: str):
         '''Переименование тестировщика.'''

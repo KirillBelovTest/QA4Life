@@ -10,12 +10,12 @@ class Bug:
         self.status = 'open'
 
     def __repr__(self):
-        return json.dumps(self.__to_dict())
+        return json.dumps(self.to_dict())
 
-    def __to_dict(self):
+    def to_dict(self):
         return {
             'type': 'Bug',
             'scenario': self.scenario.name,
-            'status': self.expected_result,
+            'status': self.status,
             'steps_to_reproduce': list(map(lambda x: x.name, self.steps_to_reproduce))
         }

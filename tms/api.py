@@ -13,7 +13,7 @@ async def get_tms():
 async def get_tester(name: str):
     try:
         return tms.get_tester(name).to_dict()
-    except Exception as exception:
+    except Exception:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
 
 
@@ -26,5 +26,5 @@ async def add_tester(tester: TesterRequest):
     try:
         tms.add_tester(tester.name, tester.level)
         return None
-    except Exception as exception:
+    except Exception:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT)

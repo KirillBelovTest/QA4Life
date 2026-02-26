@@ -10,7 +10,7 @@ async def get_tms():
     return tms.to_dict()
 
 @api.get("/tester")
-async def get_tester(name: str = None):
+async def get_tester(name: str):
     return tms.get_tester(name).to_dict()
 
 class TesterRequest(BaseModel):

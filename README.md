@@ -49,7 +49,7 @@ curl -X POST "http://localhost:8000/tester" \
 Получаем тестера
 
 ```bash
-curl -X GET "http://localhost:8000/tester?name=kirill"
+curl -X GET "http://localhost:8000/tester?name=Kirill"
 ```
 
 Получаем данные о ТМС

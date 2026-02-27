@@ -1,0 +1,49 @@
+<|"Notebook" -> <|"Controller" -> "0ef56494-6c98-423d-8bc1-f56662feace2", 
+   "FocusedCell" -> CoffeeLiqueur`Notebook`Cells`CellObj[
+     CoffeeLiqueur`Notebook`Cells`CellObj`$363], "FocusedCellSelection" -> 
+    {30, 29}, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "f85a0449-bad5-4493-802d-ad8b791da0e6", 
+   "Objects" -> <||>, "Path" -> 
+    "C:\\Users\\Kirill\\Projects\\QA4Life\\tms api.wln", 
+   "PublicFields" -> {"Properties"}, "Symbols" -> <||>, "TOC" -> {}|>, 
+ "Cells" -> {<|"Data" -> "$url = \"http://localhost:8000/tester\";", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ea1225cc-21c2-42eb-9d72-bed51da4e308", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "a5f36ecb-357a-453e-99bc-0a021d7e0eea"|>, 
+   <|"Data" -> "$body = ExportString[<|\"name\" -> \"Kirill\", \"level\" -> \
+1|>, \"RawJSON\"];", "Display" -> "codemirror", 
+    "Hash" -> "5c453aca-23c7-4849-a984-754a2746f889", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "a5f36ecb-357a-453e-99bc-0a021d7e0eea"|>, 
+   <|"Data" -> "$request = HTTPRequest[$url, <|\n  Method -> \"POST\", \n  \
+\"ContentType\" -> \"application/json\", \n  \"Body\" -> $body\n|>];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "44e0d2ef-7dda-412c-a5ba-b9d0abb82f8e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "a5f36ecb-357a-453e-99bc-0a021d7e0eea"|>, 
+   <|"Data" -> "$response = URLRead[$request];", "Display" -> "codemirror", 
+    "Hash" -> "ac24beba-af56-46c1-a0d2-06fadc9f8703", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "a5f36ecb-357a-453e-99bc-0a021d7e0eea"|>, 
+   <|"Data" -> "$response[\"StatusCode\"]\n$response[\"Body\"]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "36f25504-71a8-49ec-bdb2-087b684a6652", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "a5f36ecb-357a-453e-99bc-0a021d7e0eea"|>, 
+   <|"Data" -> "201", "Display" -> "codemirror", 
+    "Hash" -> "4603121b-29b1-4150-956f-82649dbf0a61", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "a5f36ecb-357a-453e-99bc-0a021d7e0eea"|>, 
+   <|"Data" -> "\"null\"", "Display" -> "codemirror", 
+    "Hash" -> "c87db057-54b2-4f5c-b443-535b2bbc0610", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "a5f36ecb-357a-453e-99bc-0a021d7e0eea"|>}, 
+ "serializer" -> "jsfn4"|>

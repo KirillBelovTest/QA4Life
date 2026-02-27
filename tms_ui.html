@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMS - Test Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 24px;
+            color: #1a1a1a;
+        }
+        
+        h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #444;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        
+        button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        button.secondary {
+            background: #6c757d;
+        }
+        
+        button.secondary:hover {
+            background: #545b62;
+        }
+        
+        button.danger {
+            background: #dc3545;
+        }
+        
+        button.danger:hover {
+            background: #c82333;
+        }
+        
+        button.success {
+            background: #28a745;
+        }
+        
+        button.success:hover {
+            background: #218838;
+        }
+        
+        .tester-card {
+            border-left: 4px solid #007bff;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .tester-card.active {
+            border-left-color: #28a745;
+        }
+        
+        .tester-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .tester-level {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .scenario-card {
+            border-left: 4px solid #ffc107;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .step-card {
+            margin-left: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .bug-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        .bug-badge.open {
+            background: #dc3545;
+            color: #fff;
+        }
+        
+        .bug-badge.closed {
+            background: #28a745;
+            color: #fff;
+        }
+        
+        .bug-badge.in_progress {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .bug-badge.wont_fix {
+            background: #6c757d;
+            color: #fff;
+        }
+        
+        .current-work {
+            margin-top: 15px;
+            padding: 15px;
+            background: #e7f3ff;
+            border-radius: 4px;
+        }
+        
+        .current-work h3 {
+            font-size: 14px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        
+        .refresh-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .status-bar {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-family: monospace;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        
+        .actions button {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧪 TMS - Test Management System</h1>
+        </header>
+        
+        <div class="status-bar" id="statusBar">
+            Загрузка...
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h2>Тестировщики</h2>
+                <div class="form-group">
+                    <input type="text" id="testerName" placeholder="Имя тестировщика">
+                </div>
+                <div class="form-group">
+                    <select id="testerLevel">
+                        <option value="1">Junior</option>
+                        <option value="2">Middle</option>
+                        <option value="3">Senior</option>
+                    </select>
+                </div>
+                <button onclick="addTester()">Добавить тестировщика</button>
+                
+                <div id="testersList" style="margin-top: 20px;"></div>
+            </div>
+            
+            <div class="card">
+                <h2>Сценарии</h2>
+                <div class="form-group">
+                    <input type="text" id="scenarioName" placeholder="Название сценария">
+                </div>
+                <button onclick="addScenario()">Создать сценарий</button>
+                
+                <div id="scenariosList" style="margin-top: 20px;"></div>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top: 20px;">
+            <h2>Рабочая область тестировщика</h2>
+            <div class="form-group">
+                <select id="selectedTester">
+                    <option value="">Выберите тестировщика</option>
+                </select>
+            </div>
+            
+            <div id="workArea" style="display: none;">
+                <div class="form-group">
+                    <input type="text" id="stepName" placeholder="Название шага">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="stepExpected" placeholder="Ожидаемый результат">
+                </div>
+                <div class="actions">
+                    <button onclick="addStep()">Добавить шаг</button>
+                    <button class="secondary" onclick="takeScenario()">Взять сценарий</button>
+                    <button class="success" onclick="takeNextStep()">Следующий шаг</button>
+                    <button onclick="executeStep()">Выполнить шаг</button>
+                </div>
+                
+                <div class="current-work" id="currentWork">
+                    <h3>Текущая работа</h3>
+                    <div id="currentWorkContent"></div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <h3>Баги</h3>
+                    <div class="actions">
+                        <button onclick="createBug()">Создать баг</button>
+                        <button class="secondary" onclick="closeBug()">Закрыть баг</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="refresh-btn" onclick="refreshData()">🔄</button>
+
+    <script>
+        let tmsData = null;
+        let selectedTesterName = '';
+
+        async function apiCall(method, url, body = null) {
+            const options = {
+                method,
+                headers: {'Content-Type': 'application/json'}
+            };
+            if (body) options.body = JSON.stringify(body);
+            const response = await fetch(url, options);
+            return response.json().catch(() => null);
+        }
+
+        async function refreshData() {
+            tmsData = await apiCall('GET', '/');
+            render();
+        }
+
+        async function addTester() {
+            const name = document.getElementById('testerName').value.trim();
+            const level = parseInt(document.getElementById('testerLevel').value);
+            if (!name) return alert('Введите имя тестировщика');
+            
+            await apiCall('POST', '/tester', {name, level});
+            document.getElementById('testerName').value = '';
+            refreshData();
+        }
+
+        async function addScenario() {
+            const name = document.getElementById('scenarioName').value.trim();
+            if (!name || !selectedTesterName) return alert('Выберите тестировщика и введите название сценария');
+            
+            await apiCall('POST', `/tester/${selectedTesterName}/scenario`, {name});
+            document.getElementById('scenarioName').value = '';
+            refreshData();
+        }
+
+        async function takeScenario() {
+            const scenarioName = prompt('Введите название сценария:');
+            if (!scenarioName || !selectedTesterName) return;
+            await apiCall('POST', `/tester/${selectedTesterName}/scenario/${encodeURIComponent(scenarioName)}/take`);
+            refreshData();
+        }
+
+        async function addStep() {
+            const name = document.getElementById('stepName').value.trim();
+            const expected = document.getElementById('stepExpected').value.trim();
+            if (!name || !expected || !selectedTesterName) return alert('Заполните все поля');
+            
+            await apiCall('POST', `/tester/${selectedTesterName}/step`, {name, expected});
+            document.getElementById('stepName').value = '';
+            document.getElementById('stepExpected').value = '';
+            refreshData();
+        }
+
+        async function takeNextStep() {
+            if (!selectedTesterName) return;
+            await apiCall('POST', `/tester/${selectedTesterName}/step/next`);
+            refreshData();
+        }
+
+        async function executeStep() {
+            const actual = prompt('Фактический результат:');
+            if (!actual || !selectedTesterName) return;
+            
+            const result = await apiCall('POST', `/tester/${selectedTesterName}/step/execute`, {actual_result: actual});
+            alert(result.passed ? '✅ Шаг пройден!' : '❌ Шаг не пройден!');
+            refreshData();
+        }
+
+        async function createBug() {
+            if (!selectedTesterName) return;
+            await apiCall('POST', `/tester/${selectedTesterName}/bug`);
+            refreshData();
+        }
+
+        async function closeBug() {
+            if (!selectedTesterName) return;
+            await apiCall('PATCH', `/tester/${selectedTesterName}/bug/0`, {status: 'closed'});
+            refreshData();
+        }
+
+        function render() {
+            if (!tmsData) return;
+            
+            document.getElementById('statusBar').textContent = 
+                `Тестировщиков: ${tmsData.testers.length} | Сценариев: ${tmsData.scenarios.length}`;
+            
+            // Testers
+            const testersHtml = tmsData.testers.map(t => `
+                <div class="tester-card ${t.current_scenario ? 'active' : ''}">
+                    <div class="tester-name">${t.name}</div>
+                    <div class="tester-level">Уровень: ${t.level}</div>
+                    ${t.current_scenario ? `<div class="tester-level">Сценарий: ${t.current_scenario}</div>` : ''}
+                    ${t.current_step ? `<div class="tester-level">Шаг: ${t.current_step}</div>` : ''}
+                </div>
+            `).join('');
+            document.getElementById('testersList').innerHTML = testersHtml;
+            
+            // Tester select
+            const selectHtml = tmsData.testers.map(t => `<option value="${t.name}">${t.name}</option>`).join('');
+            document.getElementById('selectedTester').innerHTML = '<option value="">Выберите тестировщика</option>' + selectHtml;
+            document.getElementById('selectedTester').value = selectedTesterName;
+            
+            // Scenarios
+            const scenariosHtml = tmsData.scenarios.map(s => `
+                <div class="scenario-card">
+                    <strong>${s.name}</strong>
+                    <div style="font-size: 12px; color: #666;">Автор: ${s.author} | Шагов: ${s.steps.length}</div>
+                    ${s.steps.map(step => `
+                        <div class="step-card">
+                            <div>${step.name}</div>
+                            <div style="font-size: 12px; color: #666;">Ожидается: ${step.expected_result}</div>
+                            ${step.bugs.length > 0 ? `<div style="margin-top: 5px;">${step.bugs.map(b => `<span class="bug-badge ${b.status}">${b.status}</span>`).join('')}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+            document.getElementById('scenariosList').innerHTML = scenariosHtml || '<div style="color: #999;">Нет сценариев</div>';
+            
+            // Work area
+            const tester = tmsData.testers.find(t => t.name === selectedTesterName);
+            document.getElementById('workArea').style.display = tester ? 'block' : 'none';
+            
+            if (tester) {
+                document.getElementById('currentWorkContent').innerHTML = `
+                    <div><strong>Сценарий:</strong> ${tester.current_scenario || 'Нет'}</div>
+                    <div><strong>Шаг:</strong> ${tester.current_step || 'Нет'} (${tester.current_step_number})</div>
+                    ${tester.current_step_bugs.length > 0 ? `<div style="margin-top: 10px;"><strong>Баги:</strong> ${tester.current_step_bugs.map(b => `<span class="bug-badge ${b.status}">${b.status}</span>`).join('')}</div>` : ''}
+                `;
+            }
+        }
+
+        document.getElementById('selectedTester').addEventListener('change', (e) => {
+            selectedTesterName = e.target.value;
+            render();
+        });
+
+        refreshData();
+        setInterval(refreshData, 5000);
+    </script>
+</body>
+</html>

@@ -1,9 +1,17 @@
 from fastapi import FastAPI, HTTPException, status
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from tms.tms import TMS
+import os
 
 api = FastAPI()
 tms = TMS()
+
+@api.get("/ui")
+async def get_ui():
+    """Serve the TMS UI."""
+    ui_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'tms_ui.html')
+    return FileResponse(ui_path, media_type='text/html')
 
 @api.get("/")
 async def get_tms():

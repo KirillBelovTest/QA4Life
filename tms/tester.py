@@ -51,8 +51,7 @@ class Tester:
     def add_step(self, name: str, expected: str):
         '''Тестировщик шаг в текущий рабочий сценарий.'''
         step = stp.Step(self.current_scenario, name, expected)
-        step_number = self.current_step_number + 1
-        self.current_scenario.steps.insert(step_number, step)
+        self.current_scenario.steps.append(step)
 
     def take_next_step(self):
         '''Тестировщик переходит к следующему шагу.'''
@@ -61,8 +60,9 @@ class Tester:
 
     def execute_step(self, actual_result: str) -> 'bool':
         '''Тестировщик выполняет текущий шаг и указывает фактический результат.'''
-        if self.current_step_number >= 0 and self.current_step_number < len(self.current_scenario.steps):
-            expected_result = self.current_scenario.steps[self.current_step_number].expected_result
+        step_index = self.current_step_number - 1
+        if step_index >= 0 and step_index < len(self.current_scenario.steps):
+            expected_result = self.current_scenario.steps[step_index].expected_result
             return expected_result == actual_result
         raise Exception(f'Step {self.current_step_number} out of range.')
 

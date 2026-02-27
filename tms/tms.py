@@ -52,3 +52,10 @@ class TMS:
         '''Переименование тестировщика.'''
         tester = self.get_tester(old_name)
         tester.name = new_name
+
+    def get_scenario(self, scenario_name: str):
+        '''Получение сценария по имени.'''
+        for scenario in self.scenarios:
+            if scenario.name == scenario_name:
+                return scenario
+        raise Exception(f'{scenario_name} not found in tms.scenarios.')

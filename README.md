@@ -27,13 +27,13 @@ python -m venv .venv
 pip install -e .[dev]
 ```
 
-# Запуск
+## Запуск
 
 ```bash
 uvicorn tms.api:api --reload
 ```
 
-# Где API
+## Где API
 
 Создаем тестера
 
@@ -58,11 +58,11 @@ curl -X GET "http://localhost:8000/tester?name=kirill"
 curl -X GET "http://localhost:8000"
 ```
 
-# OpenAPI документация
+## OpenAPI документация
 
 Здесь: `http://localhost:8000/docs`
 
-# Запуск тестов
+## Запуск тестов
 
 ```bash
 pytest .

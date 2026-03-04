@@ -18,6 +18,12 @@ class TMS:
             'scenarios': list(map(lambda x: x.to_dict(), self.scenarios))
         }
 
+    def __is_tester_exists(self, tester_name) -> bool:
+        for tester in self.testers:
+            if tester.name == tester_name:
+                return True
+        return False
+
     def add_tester(self, name: str, level: int):
         '''Добавление нового тестировщика в систему.'''
         if self.__is_tester_exists(name):
@@ -25,13 +31,6 @@ class TMS:
         else:
             tester = tst.Tester(self, name, level)
             self.testers.append(tester)
-
-
-    def __is_tester_exists(self, tester_name) -> bool:
-        for tester in self.testers:
-            if tester.name == tester_name:
-                return True
-        return False
 
     def get_tester(self, tester_name: str):
         '''Получение тестировщика по имени.'''
@@ -53,9 +52,7 @@ class TMS:
         tester = self.get_tester(old_name)
         tester.name = new_name
 
-    def get_scenario(self, scenario_name: str):
-        '''Получение сценария по имени.'''
-        for scenario in self.scenarios:
-            if scenario.name == scenario_name:
-                return scenario
-        raise Exception(f'{scenario_name} not found in tms.scenarios.')
+    def promote_tester(self, tester_name: str, new_level: int):
+        '''Повышение тестировщика.'''
+        tester = self.get_tester(tester_name)
+        tester.level = new_level

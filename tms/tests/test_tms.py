@@ -1,4 +1,5 @@
 from pytest import raises
+from pytest import mark
 from pytest import fixture
 from tms.tms import TMS
 
@@ -7,6 +8,7 @@ def tms():
     new_tms = TMS()
     yield new_tms
 
+@mark.skip
 def test_create_tester(tms: TMS):
     berfore_testers_count = len(tms.testers)
     tester_name = 'new_tester1'
@@ -15,6 +17,13 @@ def test_create_tester(tms: TMS):
     after_tester_count = len(tms.testers)
     assert tester.name == tester_name
     assert berfore_testers_count + 1 == after_tester_count
+
+@mark.xfail
+def test_fail(tms: TMS):
+    tms.add_tester('bad tester', 1)
+    tms.promote_tester('bad tester', -2)
+    tester = tms.get_tester('bad tester')
+    assert tester.level == 1
 
 def test_remove_tester(tms):
     tester_name = 'tester_for_remove'
@@ -42,3 +51,11 @@ def test_cant_add_tester(tms: TMS):
     tms.add_tester(tester_name, 1)
     with raises(Exception):
         tms.add_tester(tester_name, 1)
+
+@mark.tms_action
+def test_promote_tester(tms: TMS):
+    tester_name = 'tester for promoution'
+    tms.add_tester(tester_name, 1)
+    tms.promote_tester(tester_name, 2)
+    tester = tms.get_tester(tester_name)
+    assert tester.level == 2

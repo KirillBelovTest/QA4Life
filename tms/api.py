@@ -5,9 +5,17 @@ from tms.tms import TMS
 api = FastAPI(description='tms api', title='TMS')
 tms = TMS()
 
+# tms
+
 @api.get("/api/tms")
 async def get_tms():
     return tms.to_dict()
+
+# tester
+
+class TesterRequest(BaseModel):
+    name: str
+    level: int
 
 @api.get("/api/tester")
 async def get_tester(name: str):
@@ -15,11 +23,6 @@ async def get_tester(name: str):
         return tms.get_tester(name).to_dict()
     except Exception:
         raise HTTPException(status_code=status.HTTP_451_UNAVAILABLE_FOR_LEGAL_REASONS)
-
-
-class TesterRequest(BaseModel):
-    name: str
-    level: int
 
 @api.post("/api/tester", status_code=status.HTTP_201_CREATED)
 async def add_tester(tester: TesterRequest):
@@ -29,105 +32,49 @@ async def add_tester(tester: TesterRequest):
     except Exception:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT)
 
+@api.delete("/api/tester", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_tester(name: str):
+    try:
+        tms.remove_tester(name)
+        return None
+    except Exception:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
+
+@api.put("/api/tester", status_code=status.HTTP_204_NO_CONTENT)
+async def update_tester(name: str, request: TesterRequest):
+    try:
+        tms.rename_tester(name, request.name)
+        tms.promote_tester(name, request.level) # ;D
+        return None
+    except Exception:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
+
+@api.patch("/api/tester", status_code=status.HTTP_204_NO_CONTENT)
+async def change_tester(name: str, request: dict):
+    try:
+        if 'new_name' in request:
+            tms.rename_tester(name, request['new_name'])
+        if 'new_level' in request:
+            tms.promote_tester(name, request['new_level'])
+        return None
+    except Exception:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
+
+# tester
+
 class ScenarioRequest(BaseModel):
     name: str
 
-@api.post("/api/tester/{name}/scenario", status_code=status.HTTP_201_CREATED)
-async def create_scenario(name: str, request: ScenarioRequest):
-    """Тестировщик создаёт новый сценарий."""
+@api.post('/api/scenario/', status_code=status.HTTP_201_CREATED)
+async def create_scenario(tester: str, request: ScenarioRequest):
     try:
-        tester = tms.get_tester(name)
-        tester.create_scenario(request.name)
-        return None
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+        tms.get_tester(tester).create_scenario(request.name)
+    except Exception:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
 
-
-@api.delete("/api/tester/{name}/scenario/{scenario_name}")
-async def remove_scenario(name: str, scenario_name: str):
-    """Тестировщик удаляет сценарий."""
+@api.delete('/api/scenario/', status_code=status.HTTP_201_CREATED)
+async def create_scenario(tester: str, request: ScenarioRequest):
     try:
-        tester = tms.get_tester(name)
-        tester.remove_scenario(scenario_name)
-        return None
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
-
-
-@api.post("/api/tester/{name}/scenario/{scenario_name}/take")
-async def take_scenario(name: str, scenario_name: str):
-    """Тестировщик берёт сценарий в работу."""
-    try:
-        tester = tms.get_tester(name)
-        tester.take_scenario(scenario_name)
-        return tester.to_dict()
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
-
-
-class StepRequest(BaseModel):
-    name: str
-    expected: str
-
-@api.post("/api/tester/{name}/step", status_code=status.HTTP_201_CREATED)
-async def add_step(name: str, request: StepRequest):
-    """Тестировщик добавляет шаг в текущий сценарий."""
-    try:
-        tester = tms.get_tester(name)
-        tester.add_step(request.name, request.expected)
-        return None
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
-
-
-@api.post("/api/tester/{name}/step/next")
-async def take_next_step(name: str):
-    """Тестировщик переходит к следующему шагу."""
-    try:
-        tester = tms.get_tester(name)
-        tester.take_next_step()
-        return tester.to_dict()
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
-
-
-class ExecuteStepRequest(BaseModel):
-    actual_result: str
-
-@api.post("/api/tester/{name}/step/execute")
-async def execute_step(name: str, request: ExecuteStepRequest):
-    """Тестировщик выполняет текущий шаг."""
-    try:
-        tester = tms.get_tester(name)
-        result = tester.execute_step(request.actual_result)
-        return {"passed": result}
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
-
-class BugRequest(BaseModel):
-    steps_to_reproduce: list = None
-
-@api.post("/api/tester/{name}/bug", status_code=status.HTTP_201_CREATED)
-async def create_bug(name: str, request: BugRequest = None):
-    """Тестировщик создаёт ошибку на текущем шаге."""
-    try:
-        tester = tms.get_tester(name)
-        steps = request.steps_to_reproduce if request else None
-        bug = tester.create_bug(steps)
-        return bug.to_dict()
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
-
-
-class BugStatusRequest(BaseModel):
-    status: str
-
-@api.patch("/api/tester/{name}/bug/{bug_index}")
-async def change_bug_status(name: str, bug_index: int, request: BugStatusRequest):
-    """Тестировщик меняет статус ошибки."""
-    try:
-        tester = tms.get_tester(name)
-        tester.change_bug_status(bug_index, request.status)
-        return tester.to_dict()
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+        tms.get_tester(tester).create_scenario(request.name)
+    except Exception:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT)

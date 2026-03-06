@@ -73,7 +73,7 @@ async def create_scenario(tester: str, request: ScenarioRequest):
         raise HTTPException(status_code=status.HTTP_409_CONFLICT)
 
 @api.delete('/api/scenario/', status_code=status.HTTP_201_CREATED)
-async def create_scenario(tester: str, request: ScenarioRequest):
+async def delete_scenario(tester: str, request: ScenarioRequest):
     try:
         tms.get_tester(tester).remove_scenario(request.name)
     except Exception:

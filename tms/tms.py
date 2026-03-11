@@ -1,4 +1,5 @@
 import json
+from pydantic import BaseModel
 
 import tms.tester as tst
 import tms.scenario as scn

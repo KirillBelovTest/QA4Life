@@ -9,7 +9,8 @@ tms = TMS()
 
 @api.get("/api/tms")
 async def get_tms():
-    return tms.to_dict()
+    '''Returns tms as JSON.'''
+    return tms
 
 # tester
 
@@ -27,8 +28,12 @@ async def get_tester(name: str):
 @api.post("/api/tester", status_code=status.HTTP_201_CREATED)
 async def add_tester(tester: TesterRequest):
     try:
-        tms.add_tester(tester.name, tester.level)
-        return None
+        try:
+            int(tester.name[0])
+        except:
+            tms.add_tester(tester.name, tester.level)
+            return None
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
     except Exception:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT)
 

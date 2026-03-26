@@ -51,3 +51,5 @@ class Tester:
     @staticmethod
     def from_dict(data: 'dict[str, str|int]') -> 'Tester':
         return Tester(str(data['name']), int(data['level']))
+
+    def create_scenario(self, scenario_name):

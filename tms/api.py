@@ -1,85 +1,62 @@
-from fastapi import FastAPI, HTTPException, status
-from pydantic import BaseModel
-from tms.tms import TMS
+# main.py
+from fastapi import FastAPI, HTTPException
+from tms.db import Tester, Bug, sqlite3
 
-api = FastAPI(description='tms api', title='TMS')
-tms = TMS()
+app = FastAPI()
+conn = sqlite3.connect("tms.db", check_same_thread=False)
 
-# tms
+# создаем таблицы
+cursor = conn.cursor()
+cursor.execute(Tester.create_table())
+cursor.execute(Bug.create_table())
+conn.commit()
 
-@api.get("/api/tms")
-async def get_tms():
-    '''Returns tms as JSON.'''
-    return tms
+# API
+@app.post("/testers")
+def create_tester(name: str, level: str):
+    if Tester.get_by_name(conn, name):
+        raise HTTPException(400, "Tester exists")
+    t = Tester(name, level)
+    t.save(conn)
+    return {"id": t.id, "name": t.name, "level": t.level}
 
-# tester
+@app.get("/testers")
+def get_testers():
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM testers")
+    return [{"id": row[0], "name": row[1], "level": row[2]} for row in cursor.fetchall()]
 
-class TesterRequest(BaseModel):
-    name: str
-    level: int
+@app.put("/testers/{name}")
+def update_tester(name: str, level: str):
+    t = Tester.get_by_name(conn, name)
+    if not t:
+        raise HTTPException(404, "Tester not found")
+    t.update_level(conn, level)
+    return {"id": t.id, "name": t.name, "level": t.level}
 
-@api.get("/api/tester")
-async def get_tester(name: str):
-    try:
-        return tms.get_tester(name).to_dict()
-    except Exception:
-        raise HTTPException(status_code=status.HTTP_451_UNAVAILABLE_FOR_LEGAL_REASONS)
+@app.post("/bugs")
+def create_bug(title: str, description: str, tester_name: str):
+    t = Tester.get_by_name(conn, tester_name)
+    if not t:
+        raise HTTPException(404, "Tester not found")
+    b = Bug(title, description, t.id)
+    b.save(conn)
+    return {"id": b.id, "title": b.title, "status": b.status}
 
-@api.post("/api/tester", status_code=status.HTTP_201_CREATED)
-async def add_tester(tester: TesterRequest):
-    try:
-        try:
-            int(tester.name[0])
-        except:
-            tms.add_tester(tester.name, tester.level)
-            return None
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
-    except Exception:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
+@app.put("/bugs/{bug_id}")
+def update_bug_status(bug_id: int, status: str):
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM bugs WHERE id = ?", (bug_id,))
+    row = cursor.fetchone()
+    if not row:
+        raise HTTPException(404, "Bug not found")
+    b = Bug(row[1], row[2], row[4])
+    b.id = row[0]
+    b.status = row[3]
+    b.update_status(conn, status)
+    return {"id": b.id, "status": b.status}
 
-@api.delete("/api/tester", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_tester(name: str):
-    try:
-        tms.remove_tester(name)
-        return None
-    except Exception:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
-
-@api.put("/api/tester", status_code=status.HTTP_204_NO_CONTENT)
-async def update_tester(name: str, request: TesterRequest):
-    try:
-        tms.rename_tester(name, request.name)
-        tms.promote_tester(name, request.level) # ;D
-        return None
-    except Exception:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
-
-@api.patch("/api/tester", status_code=status.HTTP_204_NO_CONTENT)
-async def change_tester(name: str, request: dict):
-    try:
-        if 'new_name' in request:
-            tms.rename_tester(name, request['new_name'])
-        if 'new_level' in request:
-            tms.promote_tester(name, request['new_level'])
-        return None
-    except Exception:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
-
-# tester
-
-class ScenarioRequest(BaseModel):
-    name: str
-
-@api.post('/api/scenario/', status_code=status.HTTP_201_CREATED)
-async def create_scenario(tester: str, request: ScenarioRequest):
-    try:
-        tms.get_tester(tester).create_scenario(request.name)
-    except Exception:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
-
-@api.delete('/api/scenario/', status_code=status.HTTP_201_CREATED)
-async def delete_scenario(tester: str, request: ScenarioRequest):
-    try:
-        tms.get_tester(tester).remove_scenario(request.name)
-    except Exception:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
+@app.get("/bugs")
+def get_bugs():
+    bugs = Bug.get_all(conn)
+    return [{"id": b.id, "title": b.title, "status": b.status} for b in bugs]

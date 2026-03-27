@@ -1,55 +1,64 @@
-class Tester:
-    table_name: str = 'testers'
+import tms.db as db
 
-    def __init__(self, name: str, level: int):
-        self.id = None
+class Tester:
+    table = "testers"
+
+    def __init__(self, name: str, level: str):
         self.name = name
         self.level = level
+        self.id = None
 
     @staticmethod
-    def create_table() -> str:
-        return f"""
-        CREATE TABLE IF NOT EXISTS {Tester.table_name} (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL UNIQUE,
-            level INTEGER NOT NULL
-        )
-        """
+    def create_table(db: 'db.SQLiteDatabase'):
+        db.execute(f"CREATE TABLE IF NOT EXISTS {Tester.table} (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, level TEXT)")
+
+    def save_to_table(self, db: 'db.SQLiteDatabase') -> 'Tester':
+        self.id = db.execute(f"INSERT INTO {Tester.table} (name, level) VALUES (?, ?)", (self.name, self.level))
+        return self
 
     @staticmethod
-    def get_from_table(name: str) -> str:
-        return f"SELECT * FROM {Tester.table_name} WHERE name = '{name}'"
+    def get_from_table(db: 'db.SQLiteDatabase', name) -> 'Tester':
+        row = db.execute(f"SELECT * FROM {Tester.table} WHERE name = ?", (name,))[0]
+        return Tester.from_row(row)
 
-    def insert_into_table(self) -> str:
-        return f"""
-        INSERT INTO {Tester.table_name} (name, level)
-        VALUES ('{self.name}', '{self.level}')
-        """
+    def update_level_in_table(self, db: 'db.SQLiteDatabase', level):
+        db.execute(f"UPDATE {self.table} SET level = ? WHERE id = ?", (level, self.id))
 
-    def delete_from_table(self) -> str:
-        if self.id is None:
-            raise ValueError("Tester not inserted yet")
-        return f"DELETE FROM {Tester.table_name} WHERE id = {self.id}"
+class Bug:
+    table = "bugs"
 
-    def update_in_table(self) -> str:
-        if self.id is None:
-            raise ValueError("Tester not inserted yet")
-        return f"""
-        UPDATE {Tester.table_name}
-        SET name = '{self.name}', level = '{self.level}'
-        WHERE id = {self.id}
-        """
-
-    def to_dict(self):
-        return {
-            'type': 'Tester',
-            'id': self.id,
-            'name': self.name,
-            'level': self.level
-        }
+    def __init__(self, title: str, description: str, created_by: int):
+        self.title = title
+        self.description = description
+        self.status = "open"
+        self.created_by = created_by
+        self.id = None
 
     @staticmethod
-    def from_dict(data: 'dict[str, str|int]') -> 'Tester':
-        return Tester(str(data['name']), int(data['level']))
+    def create_table():
+        return f"CREATE TABLE IF NOT EXISTS {Bug.table} (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, status TEXT, created_by INTEGER)"
 
-    def create_scenario(self, scenario_name):
+    def save(self, conn):
+        cursor = conn.cursor()
+        cursor.execute(f"INSERT INTO {self.table} (title, description, status, created_by) VALUES (?, ?, ?, ?)",
+                      (self.title, self.description, self.status, self.created_by))
+        conn.commit()
+        self.id = cursor.lastrowid
+
+    def update_status(self, conn, status):
+        self.status = status
+        cursor = conn.cursor()
+        cursor.execute(f"UPDATE {self.table} SET status = ? WHERE id = ?", (status, self.id))
+        conn.commit()
+
+    @staticmethod
+    def get_all(conn):
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {Bug.table}")
+        bugs = []
+        for row in cursor.fetchall():
+            b = Bug(row[1], row[2], row[4])
+            b.status = row[3]
+            b.id = row[0]
+            bugs.append(b)
+        return bugs

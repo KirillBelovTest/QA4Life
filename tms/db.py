@@ -1,49 +1,94 @@
 import sqlite3
-import os
-
+from typing import Union, Literal
 
 class SQLiteDatabase:
     def __init__(self, db_path: str):
         self.db_path = db_path
-        self.conn = None
+        self.execute("""
+            CREATE TABLE IF NOT EXISTS testers (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                grade TEXT NOT NULL
+            )
+        """)
+        self.execute("""
+            CREATE TABLE IF NOT EXISTS bugs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                description TEXT,
+                steps TEXT,
+                status TEXT DEFAULT 'open',
+                tester_id INTEGER NOT NULL,
+                attachments TEXT,
+                FOREIGN KEY (tester_id) REFERENCES testers (id)
+            )
+        """)
 
-    def connect(self):
-        db_dir = os.path.dirname(self.db_path)
-        if db_dir and not os.path.exists(db_dir):
-            os.makedirs(db_dir)
-        self.conn = sqlite3.connect(self.db_path)
 
-    def close(self):
-        if self.conn:
-            self.conn.close()
-            self.conn = None
+    def execute(self, query: str, params: tuple = (), fetch: Literal['all', 'one', 'id', None] = None):
+        """Execute query with current connection"""
+        try:
+            conn = sqlite3.connect(self.db_path)
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute(query, params)
 
-    def execute(self, sql: str, params: tuple = ()):
-        if not self.conn:
-            self.connect()
-
-        cursor = self.conn.cursor()
-        cursor.execute(sql, params)
-
-        sql_upper = sql.strip().upper()
-
-        if sql_upper.startswith('SELECT'):
-            result = cursor.fetchall()
-            cursor.close()
-            return result
-        else:
-            self.conn.commit()
-            if sql_upper.startswith('INSERT'):
-                lastrowid = cursor.lastrowid
-                cursor.close()
-                return lastrowid
-            else:
-                cursor.close()
+            if fetch == 'all':
+                rows = cursor.fetchall()
+                return [dict(row) for row in rows] if rows else []
+            elif fetch == 'one':
+                row = cursor.fetchone()
+                return dict(row) if row else None
+            elif fetch == 'id':
+                conn.commit()
+                return cursor.lastrowid
+            else:  # None
+                conn.commit()
                 return None
 
-    def __enter__(self):
-        self.connect()
-        return self
+        finally:
+            cursor.close()
+            conn.close()
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        self.close()
+
+    def create(self, table: str, **kwargs) -> int:
+        """Insert record and return its ID"""
+        columns = ', '.join(kwargs.keys())
+        placeholders = ', '.join(['?' for _ in kwargs])
+        values = tuple(kwargs.values())
+        query = f"INSERT INTO {table} ({columns}) VALUES ({placeholders})"
+        return self.execute(query, values, fetch='id')
+
+
+    def read(self, table: str, **kwargs) -> Union[dict, list, None]:
+        """Select records. Returns single dict if 'id' provided, otherwise list"""
+        if not kwargs:
+            query = f"SELECT * FROM {table}"
+            return self.execute(query, fetch='all')
+
+        conditions = ' AND '.join([f"{k} = ?" for k in kwargs.keys()])
+        values = tuple(kwargs.values())
+        query = f"SELECT * FROM {table} WHERE {conditions}"
+
+        if 'id' in kwargs:
+            return self.execute(query, values, fetch='one')
+        return self.execute(query, values, fetch='all')
+
+
+    def update(self, table: str, item_id: int, **kwargs) -> bool:
+        """Update record by ID"""
+        if not kwargs:
+            return False
+
+        set_clause = ', '.join([f"{k} = ?" for k in kwargs.keys()])
+        values = tuple(kwargs.values()) + (item_id,)
+        query = f"UPDATE {table} SET {set_clause} WHERE id = ?"
+        self.execute(query, values, fetch=None)
+        return True
+
+
+    def delete(self, table: str, item_id: int) -> bool:
+        """Delete record by ID"""
+        query = f"DELETE FROM {table} WHERE id = ?"
+        self.execute(query, (item_id,), fetch=None)
+        return True

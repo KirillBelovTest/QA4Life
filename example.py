@@ -1,4 +1,4 @@
-from tms.tms import TestManagmentSystem
+from tms.models import TestManagmentSystem
 from tms.tester import Tester
 from tms.scenario import Scenario
 from tms.step import Step

@@ -3,7 +3,7 @@ from fastapi.responses import PlainTextResponse
 from typing import Optional
 
 from tms.db import TMSDatabase
-from tms.tms import Tester, Bug
+from tms.models import Tester, Bug
 
 api = FastAPI()
 
@@ -12,7 +12,7 @@ def get_db():
     yield TMSDatabase("tms.db")
 
 
-# POST /testers
+# POST /testers HTTP/1.1
 # content-type: application/json
 #
 # {

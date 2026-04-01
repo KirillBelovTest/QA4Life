@@ -1,4 +1,4 @@
-from typing import ClassVar, Optional
+from typing import ClassVar, Optional, Any
 from pydantic import BaseModel
 from tms.db import TMSDatabase
 
@@ -7,7 +7,7 @@ class Tester(BaseModel):
     id: Optional[int] = None
     name: str
     grade: int
-    TABLE: ClassVar[str] = None
+    TABLE: ClassVar[str] = 'testers'
 
     @staticmethod
     def create_table(db: TMSDatabase, table: str = 'testers'):
@@ -25,23 +25,45 @@ class Tester(BaseModel):
             INSERT INTO {Tester.TABLE} (name, grade)
             VALUES ({self.name}, {self.grade});
         '''
-        self.id = db.execute(query=query, fetch='id')
+        id = db.execute(query=query, fetch='id')
+        if id and isinstance(id, int):
+            self.id = id
 
     @staticmethod
-    def get_from_table(db: TMSDatabase, id: int = None, name: str = None, grade: int = None):
+    def get_from_table(db: TMSDatabase,
+                       id: Optional[int] = None,
+                       name: Optional[str] = None,
+                       grade: Optional[int] = None):
         if id:
             query = f'''
                 SELECT * FROM {Tester.TABLE} WHERE id = {id}
             '''
             return db.execute(query=query, fetch='one')
 
+        query = f'''
+                SELECT * FROM {Tester.TABLE}
+            '''
+
+        where = []
+
+        if name:
+            where.append(f'name = {name}')
+
+        if grade:
+            where.append(f'grade = {grade}')
+
+        if len(where) > 0:
+            query += ' WHERE '
+            query += ' AND '.join(where)
+
+        return db.execute(query=query, fetch='all')
 
 class Bug(BaseModel):
     id: Optional[int] = None
     title: str
     status: str
     author_id: int
-    TABLE: ClassVar[str] = None
+    TABLE: ClassVar[str] = 'bugs'
 
     @staticmethod
     def create_table(db: TMSDatabase, table: str = 'bugs'):
@@ -64,7 +86,7 @@ class Bug(BaseModel):
                 SET
                     title = {self.title},
                     status = {self.status},
-                    author_id = {self.author}
+                    author_id = {self.author_id}
                 WHERE
                     id = {self.id}
             '''
@@ -73,12 +95,42 @@ class Bug(BaseModel):
                 INSERT INTO {Bug.TABLE} (title, status, author_id)
                 VALUES ({self.title}, {self.status}, {self.author_id});
             '''
-            self.id = db.execute(query=query, fetch='id')
+            id = db.execute(query=query, fetch='id')
+            if id and isinstance(id, int):
+                self.id = id
 
     @staticmethod
-    def get_from_table(db: TMSDatabase, id: int = None, title: str = None, status: str = None, author_id: int = None):
+    def get_from_table(db: TMSDatabase,
+                       id: Optional[int] = None,
+                       title: Optional[str] = None,
+                       status: Optional[str] = None,
+                       author_id: Optional[int] = None):
         if id:
             query = f'''
-                SELECT * FROM {Tester.TABLE} WHERE id = {id}
+                SELECT * FROM {Bug.TABLE} WHERE id = {id}
             '''
-            return db.execute(query=query, fetch='one')
+
+            result = db.execute(query=query, fetch='one')
+            if isinstance(result, dict):
+                return result
+
+        query = f'''
+            SELECT * FROM {Bug.TABLE}
+        '''
+
+        where = []
+
+        if title:
+            where.append(f'title = {title}')
+        if status:
+            where.append(f'status = {status}')
+        if author_id:
+            where.append(f'author_id = {author_id}')
+
+        if len(where) > 0:
+            query += ' WHERE '
+            query += ' AND '.join(where)
+
+        result = db.execute(query=query, fetch='all')
+        if isinstance(result, list):
+            return result

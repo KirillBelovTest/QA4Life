@@ -2,45 +2,39 @@ from fastapi import FastAPI, Form, Query, Body, File, UploadFile, Depends
 from fastapi.responses import PlainTextResponse
 from typing import Optional
 
-from pydantic import BaseModel
-from tms.db import SQLiteDatabase
-
+from tms.db import TMSDatabase
+from tms.tms import Tester, Bug
 
 api = FastAPI()
 
 
-db = SQLiteDatabase("tms.db")
+db = TMSDatabase("tms.db")
 
 
 def get_db():
     yield db
 
-class TesterModel(BaseModel):
-    id: 'Optional[int]' = None
-    name: 'str'
-    grade: 'int'
 
 # POST + JSON
 @api.post("/testers")
 async def create_tester(
-    tester: TesterModel,
-    db: SQLiteDatabase = Depends(get_db)
+    tester: Tester,
+    db: TMSDatabase = Depends(get_db)
 ):
     """Create a new tester - POST + JSON"""
-    tester.id = db.create("testers", name=tester.name, grade=tester.grade)
-    return tester
+    tester.save(db)
+    return tester.id
 
 # PUT + QUERY
 @api.put("/testers/{tester_id}")
 async def update_tester_grade(
     tester_id: int,
     grade: str = Query(..., description="New grade for tester"),
-    db: SQLiteDatabase = Depends(get_db)
+    db: TMSDatabase = Depends(get_db)
 ):
     """Update tester grade - PUT + query parameter"""
-    tester = db.read("testers", id=tester_id)
-    if not tester:
-        return {"error": "Tester not found"}
+    tester = Tester.get_from_table(db, tester_id)
+
 
     db.update("testers", tester_id, grade=grade)
     return tester

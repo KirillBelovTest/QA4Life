@@ -38,7 +38,9 @@ class Tester(BaseModel):
             query = f'''
                 SELECT * FROM {Tester.TABLE} WHERE id = {id}
             '''
-            return db.execute(query=query, fetch='one')
+            result = db.execute(query=query, fetch='one')
+            if isinstance(result, dict):
+                Tester(**result)
 
         query = f'''
                 SELECT * FROM {Tester.TABLE}
@@ -56,7 +58,9 @@ class Tester(BaseModel):
             query += ' WHERE '
             query += ' AND '.join(where)
 
-        return db.execute(query=query, fetch='all')
+        result = db.execute(query=query, fetch='all')
+        if isinstance(result, list):
+            return list(map(lambda t: Tester(**t), result))
 
 class Bug(BaseModel):
     id: Optional[int] = None

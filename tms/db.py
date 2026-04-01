@@ -1,29 +1,12 @@
 import sqlite3
+import tms.tms as tms
 from typing import Any, Literal
 
 class TMSDatabase:
     def __init__(self, db_path: str):
         self.db_path = db_path
-        self.execute("""
-            CREATE TABLE IF NOT EXISTS testers (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL,
-                grade TEXT NOT NULL
-            )
-        """)
-        self.execute("""
-            CREATE TABLE IF NOT EXISTS bugs (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                title TEXT NOT NULL,
-                description TEXT,
-                steps TEXT,
-                status TEXT DEFAULT 'open',
-                tester_id INTEGER NOT NULL,
-                attachments TEXT,
-                FOREIGN KEY (tester_id) REFERENCES testers (id)
-            )
-        """)
-
+        tms.Tester.create_table(self)
+        tms.Bug.create_table(self)
 
     def execute(self,
                 query: str,

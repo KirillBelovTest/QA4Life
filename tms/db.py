@@ -1,7 +1,7 @@
 import sqlite3
 from typing import Union, Literal
 
-class SQLiteDatabase:
+class TMSDatabase:
     def __init__(self, db_path: str):
         self.db_path = db_path
         self.execute("""

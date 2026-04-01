@@ -11,3 +11,8 @@ def test_get_create_tester():
     tester = requests.post(f'{DEFAULT_URL}/testers', json={'name':'kirill', 'grade':2}).json()
     testers = requests.get(f'{DEFAULT_URL}/testers').json()
     assert tester in testers
+
+@mark.api
+def test_get_testers():
+    pass
+

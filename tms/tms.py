@@ -116,7 +116,7 @@ class Bug(BaseModel):
 
             result = db.execute(query=query, fetch='one')
             if isinstance(result, dict):
-                return result
+                return Bug(**result)
 
         query = f'''
             SELECT * FROM {Bug.TABLE}
@@ -137,4 +137,4 @@ class Bug(BaseModel):
 
         result = db.execute(query=query, fetch='all')
         if isinstance(result, list):
-            return result
+            return list(map(lambda b: Bug(**b)))

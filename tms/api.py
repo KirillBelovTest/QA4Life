@@ -8,11 +8,8 @@ from tms.tms import Tester, Bug
 api = FastAPI()
 
 
-db = TMSDatabase("tms.db")
-
-
 def get_db():
-    yield db
+    yield TMSDatabase("tms.db")
 
 
 # POST /testers

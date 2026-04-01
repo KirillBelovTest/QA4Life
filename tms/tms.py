@@ -1,6 +1,6 @@
 from typing import ClassVar, Optional, Any
 from pydantic import BaseModel
-from tms.db import TMSDatabase
+import tms.db as db
 
 
 class Tester(BaseModel):
@@ -10,27 +10,27 @@ class Tester(BaseModel):
     TABLE: ClassVar[str] = 'testers'
 
     @staticmethod
-    def create_table(db: TMSDatabase, table: str = 'testers'):
+    def create_table(db: db.TMSDatabase, table: str = 'testers'):
         Tester.TABLE = table
-        db.execute(f"""
+        db.execute(f'''
             CREATE TABLE IF NOT EXISTS {Tester.TABLE} (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
                 grade TEXT NOT NULL
             )
-        """)
+        ''')
 
-    def save(self, db: TMSDatabase):
+    def save(self, db: db.TMSDatabase):
         query = f'''
             INSERT INTO {Tester.TABLE} (name, grade)
-            VALUES ({self.name}, {self.grade});
+            VALUES ('{self.name}', '{self.grade}');
         '''
         id = db.execute(query=query, fetch='id')
         if id and isinstance(id, int):
             self.id = id
 
     @staticmethod
-    def get_from_table(db: TMSDatabase,
+    def get_from_table(db: db.TMSDatabase,
                        id: Optional[int] = None,
                        name: Optional[str] = None,
                        grade: Optional[int] = None):
@@ -40,7 +40,7 @@ class Tester(BaseModel):
             '''
             result = db.execute(query=query, fetch='one')
             if isinstance(result, dict):
-                Tester(**result)
+                return Tester(**result)
 
         query = f'''
                 SELECT * FROM {Tester.TABLE}
@@ -49,10 +49,10 @@ class Tester(BaseModel):
         where = []
 
         if name:
-            where.append(f'name = {name}')
+            where.append(f"name = '{name}'")
 
         if grade:
-            where.append(f'grade = {grade}')
+            where.append(f"grade = '{grade}'")
 
         if len(where) > 0:
             query += ' WHERE '
@@ -70,9 +70,9 @@ class Bug(BaseModel):
     TABLE: ClassVar[str] = 'bugs'
 
     @staticmethod
-    def create_table(db: TMSDatabase, table: str = 'bugs'):
+    def create_table(db: db.TMSDatabase, table: str = 'bugs'):
         Bug.TABLE = table
-        db.execute(f"""
+        db.execute(f'''
             CREATE TABLE IF NOT EXISTS {Bug.TABLE} (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 title TEXT NOT NULL,
@@ -80,31 +80,32 @@ class Bug(BaseModel):
                 author_id INTEGER NOT NULL,
                 FOREIGN KEY (author_id) REFERENCES {Tester.TABLE} (id)
             )
-        """)
+        ''')
 
-    def save(self, db: TMSDatabase):
+    def save(self, db: db.TMSDatabase):
+        '''Сохраняет баг в БД.'''
         if self.id:
             query = f'''
                 UPDATE
                     {Bug.TABLE}
                 SET
-                    title = {self.title},
-                    status = {self.status},
-                    author_id = {self.author_id}
+                    title = '{self.title}',
+                    status = '{self.status}',
+                    author_id = '{self.author_id}'
                 WHERE
                     id = {self.id}
             '''
         else:
             query = f'''
                 INSERT INTO {Bug.TABLE} (title, status, author_id)
-                VALUES ({self.title}, {self.status}, {self.author_id});
+                VALUES ('{self.title}', '{self.status}', {self.author_id});
             '''
             id = db.execute(query=query, fetch='id')
             if id and isinstance(id, int):
                 self.id = id
 
     @staticmethod
-    def get_from_table(db: TMSDatabase,
+    def get_from_table(db: db.TMSDatabase,
                        id: Optional[int] = None,
                        title: Optional[str] = None,
                        status: Optional[str] = None,
@@ -125,9 +126,9 @@ class Bug(BaseModel):
         where = []
 
         if title:
-            where.append(f'title = {title}')
+            where.append(f"title = '{title}'")
         if status:
-            where.append(f'status = {status}')
+            where.append(f"status = '{status}'")
         if author_id:
             where.append(f'author_id = {author_id}')
 

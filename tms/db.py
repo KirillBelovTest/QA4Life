@@ -12,7 +12,7 @@ class TMSDatabase:
                 query: str,
                 params: tuple = (),
                 fetch: Literal['all', 'one', 'id', None] = None) -> None | int | 'dict[str, Any]' | 'list[dict[str, Any]]':
-        """Execute query with new connection"""
+        '''Выполняет запрос каждый раз создавая новое соединение.'''
         try:
             conn = sqlite3.connect(self.db_path)
             conn.row_factory = sqlite3.Row

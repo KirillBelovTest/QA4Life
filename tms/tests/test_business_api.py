@@ -57,7 +57,7 @@ def clean_database():
 
 @fixture(scope='function')
 def tms_client():
-    """Создаем клиент перед каждым тестом"""
+    # Создаем клиент перед каждым тестом
     client = TMSClient(DEFAULT_URL)
     yield client
 

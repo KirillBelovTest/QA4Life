@@ -25,10 +25,10 @@ class Tester(BaseModel):
             query = f'''
                 UPDATE {Tester.TABLE}
                 SET
-                    name = '{self.name}'
+                    name = '{self.name}',
                     grade = {self.grade}
                 WHERE
-                    id = {self.id};
+                    id = {self.id}
             '''
         else:
             query = f'''
@@ -128,7 +128,6 @@ class Bug(BaseModel):
             '''
 
             result = db.execute(query=query, fetch='one')
-            print(result)
             if isinstance(result, dict):
                 return Bug(**result)
 
@@ -148,10 +147,6 @@ class Bug(BaseModel):
         if len(where) > 0:
             query += ' WHERE '
             query += ' AND '.join(where)
-
-        query += ';'
-
-        print(query)
 
         result = db.execute(query=query, fetch='all')
         if isinstance(result, list):

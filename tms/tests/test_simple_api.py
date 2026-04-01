@@ -43,7 +43,6 @@ def test_update_tester_grade(name: str, grade: int):
     tester_id = requests.post(f'{DEFAULT_URL}/testers', json={'name': name, 'grade': grade}).json()
 
     new_grade = grade + 1
-    print(f'NEW GRADE: {new_grade}')
 
     # Обновляем уровень
     response = requests.put(f'{DEFAULT_URL}/testers/{tester_id}?grade={new_grade}')

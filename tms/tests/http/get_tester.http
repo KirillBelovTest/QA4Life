@@ -1,0 +1,7 @@
+POST http://localhost:8000/testers HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Igor",
+    "grade": 22
+}

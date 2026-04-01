@@ -22,30 +22,35 @@ def clean_database():
 
 
 @mark.api
-def test_get_create_tester():
+@mark.parametrize('name,grade', [('kirill', 1), ('eugeny', 2), ('gleb', 4)])
+def test_get_create_tester(name: str, grade: int):
     # Создаем тестировщика, получаем id
-    tester_id = requests.post(f'{DEFAULT_URL}/testers', json={'name': 'kirill', 'grade': 2}).json()
+    tester_id = requests.post(f'{DEFAULT_URL}/testers', json={'name': name, 'grade': grade}).json()
 
     # Получаем тестировщика по id
     tester = requests.get(f'{DEFAULT_URL}/testers?id={tester_id}').json()
 
     # Проверяем что созданный тестировщик имеет правильные поля
     assert tester['id'] == tester_id
-    assert tester['name'] == 'kirill'
-    assert tester['grade'] == 2
+    assert tester['name'] == name
+    assert tester['grade'] == grade
 
 
 @mark.api
-def test_update_tester_grade():
+@mark.parametrize('name,grade', [('ivan', -1), ('oleg', 3), ('viktor', 5)])
+def test_update_tester_grade(name: str, grade: int):
     # Создаем тестировщика
-    tester_id = requests.post(f'{DEFAULT_URL}/testers', json={'name': 'alex', 'grade': 1}).json()
+    tester_id = requests.post(f'{DEFAULT_URL}/testers', json={'name': name, 'grade': grade}).json()
+
+    new_grade = grade + 1
+    print(f'NEW GRADE: {new_grade}')
 
     # Обновляем уровень
-    response = requests.put(f'{DEFAULT_URL}/testers/{tester_id}?grade=3')
+    response = requests.put(f'{DEFAULT_URL}/testers/{tester_id}?grade={new_grade}')
     updated_tester = response.json()
 
-    assert updated_tester['name'] == 'alex'
-    assert updated_tester['grade'] == 3
+    assert updated_tester['name'] == name
+    assert updated_tester['grade'] == new_grade
     assert updated_tester['id'] == tester_id
 
 
@@ -60,7 +65,7 @@ def test_create_bug_form_urlencoded():
         data={'title': 'login failed', 'status': 'opened'}
     )
     bug_id = response.json()
-    print(bug_id)
+    assert isinstance(bug_id, int)
 
     # Получаем созданный баг по id
     bug = requests.get(f'{DEFAULT_URL}/bugs?id={bug_id}').json()

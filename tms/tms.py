@@ -16,18 +16,28 @@ class Tester(BaseModel):
             CREATE TABLE IF NOT EXISTS {Tester.TABLE} (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
-                grade TEXT NOT NULL
+                grade INTEGER NOT NULL
             )
         ''')
 
     def save(self, db: db.TMSDatabase):
-        query = f'''
-            INSERT INTO {Tester.TABLE} (name, grade)
-            VALUES ('{self.name}', '{self.grade}');
-        '''
-        id = db.execute(query=query, fetch='id')
-        if id and isinstance(id, int):
-            self.id = id
+        if isinstance(self.id, int):
+            query = f'''
+                UPDATE {Tester.TABLE}
+                SET
+                    name = '{self.name}'
+                    grade = {self.grade}
+                WHERE
+                    id = {self.id};
+            '''
+        else:
+            query = f'''
+                INSERT INTO {Tester.TABLE} (name, grade)
+                VALUES ('{self.name}', '{self.grade}');
+            '''
+            id = db.execute(query=query, fetch='id')
+            if id and isinstance(id, int):
+                self.id = id
 
     @staticmethod
     def get_from_table(db: db.TMSDatabase,
@@ -95,6 +105,7 @@ class Bug(BaseModel):
                 WHERE
                     id = {self.id}
             '''
+            db.execute(query=query)
         else:
             query = f'''
                 INSERT INTO {Bug.TABLE} (title, status, author_id)
@@ -103,6 +114,7 @@ class Bug(BaseModel):
             id = db.execute(query=query, fetch='id')
             if id and isinstance(id, int):
                 self.id = id
+                return id
 
     @staticmethod
     def get_from_table(db: db.TMSDatabase,
@@ -116,6 +128,7 @@ class Bug(BaseModel):
             '''
 
             result = db.execute(query=query, fetch='one')
+            print(result)
             if isinstance(result, dict):
                 return Bug(**result)
 
@@ -136,6 +149,10 @@ class Bug(BaseModel):
             query += ' WHERE '
             query += ' AND '.join(where)
 
+        query += ';'
+
+        print(query)
+
         result = db.execute(query=query, fetch='all')
         if isinstance(result, list):
-            return list(map(lambda b: Bug(**b)))
+            return result

@@ -45,7 +45,7 @@ async def update_tester_grade(
 # POST /bugs?author_id=1
 # content-type: application/x-www-form-urlencoded
 #
-# title='authorization failed'&status=opened
+# title='login failed'&status=opened
 @api.post("/bugs")
 async def create_bug(
     title: str = Form(...),
@@ -61,7 +61,7 @@ async def create_bug(
     return bug.save(db)
 
 
-# PUT /bugs/1?filed=status
+# PUT /bugs/1?field=status
 # content-type: text/plain
 #
 # closed

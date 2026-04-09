@@ -1,1 +1,1 @@
-SELECT * FROM 'testers'
+SELECT * FROM testers

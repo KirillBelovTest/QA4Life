@@ -58,7 +58,8 @@ async def create_bug(
     Информация о баге в теле в виде url form encoded."""
     tester = Tester.get_from_table(db, author_id)
     bug = Bug(**{'title': title, 'status': status, 'author_id': tester.id})
-    return bug.save(db)
+    bug.save(db)
+    return bug.id
 
 
 # PUT /bugs/1?field=status
@@ -77,7 +78,8 @@ async def update_bug_field(
     Затем сохраняет новые поля."""
     bug = Bug.get_from_table(db, id)
     setattr(bug, field, new_value)
-    bug.save(db)
+    print(f'{bug}')
+    print(bug.save(db))
     return f"Bug {id} field '{field}' updated to: {new_value}"
 
 

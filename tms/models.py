@@ -17,60 +17,22 @@ class Tester(BaseModel):
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
                 grade INTEGER NOT NULL
-            )
+            );
         ''')
 
     def save(self, db: db.TMSDatabase):
-        if isinstance(self.id, int):
-            query = f'''
-                UPDATE {Tester.TABLE}
-                SET
-                    name = '{self.name}',
-                    grade = {self.grade}
-                WHERE
-                    id = {self.id}
-            '''
-        else:
-            query = f'''
-                INSERT INTO {Tester.TABLE} (name, grade)
-                VALUES ('{self.name}', '{self.grade}');
-            '''
-            id = db.execute(query=query, fetch='id')
-            if id and isinstance(id, int):
-                self.id = id
+        self.id = db.save(Tester.TABLE, self.id, {'name': self.name, 'grade': self.grade})
 
     @staticmethod
     def get_from_table(db: db.TMSDatabase,
                        id: Optional[int] = None,
                        name: Optional[str] = None,
                        grade: Optional[int] = None):
-        if id:
-            query = f'''
-                SELECT * FROM {Tester.TABLE} WHERE id = {id}
-            '''
-            result = db.execute(query=query, fetch='one')
-            if isinstance(result, dict):
-                return Tester(**result)
-
-        query = f'''
-                SELECT * FROM {Tester.TABLE}
-            '''
-
-        where = []
-
-        if name:
-            where.append(f"name = '{name}'")
-
-        if grade:
-            where.append(f"grade = '{grade}'")
-
-        if len(where) > 0:
-            query += ' WHERE '
-            query += ' AND '.join(where)
-
-        result = db.execute(query=query, fetch='all')
-        if isinstance(result, list):
-            return list(map(lambda t: Tester(**t), result))
+        result = db.get_from_table(Tester.TABLE, id,
+                                   {'name': name, 'grade': grade})
+        if isinstance(result, dict):
+            return Tester(**result)
+        return list(map(lambda t: Tester(**dict(t)), result))
 
 class Bug(BaseModel):
     id: Optional[int] = None
@@ -93,28 +55,8 @@ class Bug(BaseModel):
         ''')
 
     def save(self, db: db.TMSDatabase):
-        '''Сохраняет баг в БД.'''
-        if self.id:
-            query = f'''
-                UPDATE
-                    {Bug.TABLE}
-                SET
-                    title = '{self.title}',
-                    status = '{self.status}',
-                    author_id = '{self.author_id}'
-                WHERE
-                    id = {self.id}
-            '''
-            db.execute(query=query)
-        else:
-            query = f'''
-                INSERT INTO {Bug.TABLE} (title, status, author_id)
-                VALUES ('{self.title}', '{self.status}', {self.author_id});
-            '''
-            id = db.execute(query=query, fetch='id')
-            if id and isinstance(id, int):
-                self.id = id
-                return id
+        self.id = db.save(Bug.TABLE, self.id,
+                {'title': self.title, 'status': self.status, 'author_id': self.author_id})
 
     @staticmethod
     def get_from_table(db: db.TMSDatabase,
@@ -122,32 +64,8 @@ class Bug(BaseModel):
                        title: Optional[str] = None,
                        status: Optional[str] = None,
                        author_id: Optional[int] = None):
-        if id:
-            query = f'''
-                SELECT * FROM {Bug.TABLE} WHERE id = {id}
-            '''
-
-            result = db.execute(query=query, fetch='one')
-            if isinstance(result, dict):
-                return Bug(**result)
-
-        query = f'''
-            SELECT * FROM {Bug.TABLE}
-        '''
-
-        where = []
-
-        if title:
-            where.append(f"title = '{title}'")
-        if status:
-            where.append(f"status = '{status}'")
-        if author_id:
-            where.append(f'author_id = {author_id}')
-
-        if len(where) > 0:
-            query += ' WHERE '
-            query += ' AND '.join(where)
-
-        result = db.execute(query=query, fetch='all')
-        if isinstance(result, list):
-            return result
+        result = db.get_from_table(Bug.TABLE, id,
+                                   {'title': title, 'status': status, 'author_id': author_id})
+        if isinstance(result, dict):
+            return Bug(**result)
+        return list(map(lambda x: Bug(**x), result))

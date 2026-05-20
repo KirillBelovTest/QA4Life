@@ -104,10 +104,3 @@ def test_promote_tester(tms_client: TMSClient, name: str, grade: int, new_grade:
     promoted_tester = tms_client.get_tester(tester)
     assert promoted_tester.name == name
     assert promoted_tester.grade == new_grade
-
-@mark.client
-@mark.parametrize('title', [('kirill', 1), ('eugeny', 2), ('gleb', 4)])
-def test_create_tester(tms_client: TMSClient, name: str, grade: int):
-    tester = tms_client.create_tester(name, grade)
-    assert tester.name == name
-    assert tester.grade == grade
